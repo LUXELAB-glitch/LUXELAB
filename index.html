@@ -201,7 +201,13 @@ Ultra-realistic cinematic avatar 3D female portrait, Blender Cycles render in CG
 
 
   <script>
+<audio id="audio" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
+<button onclick="ativarMusica()" class="music-btn">
+    🎵 Música
+</button>
     function copiar(id, botao) {
 
       const texto = document.getElementById(id).innerText;
@@ -224,7 +230,7 @@ Ultra-realistic cinematic avatar 3D female portrait, Blender Cycles render in CG
       const audio = document.getElementById("audio");
 
       if (audio.paused) {
-        audio.play(3 doors down here whithout you);
+        audio.play();
       } else {
         audio.pause();
       }
