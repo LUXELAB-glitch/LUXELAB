@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LUXELAB - Prompt Studio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0b0b0f;
+            color: white;
+            min-height: 100vh;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #aaa;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #25252f;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .prompts {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .card {
+            background: #15151d;
+            border: 1px solid #292936;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .card h2 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .copy {
+            margin-top: 15px;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* TEMA CLARO */
+
+        body.light {
+            background: #f2f2f2;
+            color: #111;
+        }
+
+        body.light .subtitle {
+            color: #555;
+        }
+
+        body.light .card {
+            background: white;
+            border-color: #ddd;
+        }
+
+        body.light .card p {
+            color: #444;
+        }
+
+        /* TEMA ROXO */
+
+        body.purple {
+            background: #160d24;
+        }
+
+        body.purple .card {
+            background: #241237;
+            border-color: #673a91;
+        }
+
+        /* TEMA VERMELHO */
+
+        body.red {
+            background: #210909;
+        }
+
+        body.red .card {
+            background: #321111;
+            border-color: #8d2929;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>✨ LUXELAB</h1>
+        <p class="subtitle">Seu laboratório de prompts</p>
+    </header>
+
+    <div class="controls">
+
+        <button onclick="tema('dark')">
+            🌙 Escuro
+        </button>
+
+        <button onclick="tema('light')">
+            ☀️ Claro
+        </button>
+
+        <button onclick="tema('purple')">
+            💜 Roxo
+        </button>
+
+        <button onclick="tema('red')">
+            ❤️ Vermelho
+        </button>
+
+    </div>
+
+    <section class="prompts">
+
+        <div class="card">
+            <h2>🎨 Prompt Realista</h2>
+
+            <p id="prompt1">
+                Crie uma imagem ultra-realista, com iluminação cinematográfica,
+                detalhes naturais da pele, sombras suaves, alta definição,
+                profundidade de campo e aparência profissional.
+            </p>
+
+            <button class="copy" onclick="copiar('prompt1')">
+                📋 Copiar Prompt
+            </button>
+        </div>
+
+
+        <div class="card">
+            <h2>🔥 Prompt 3D</h2>
+
+            <p id="prompt2">
+                Crie um personagem em 3D realista, com materiais PBR,
+                iluminação ambiente, sombras realistas, alto nível de detalhes,
+                renderização cinematográfica e aparência de render do Blender.
+            </p>
+
+            <button class="copy" onclick="copiar('prompt2')">
+                📋 Copiar Prompt
+            </button>
+        </div>
+
+
+        <div class="card">
+            <h2>📸 Prompt Fotográfico</h2>
+
+            <p id="prompt3">
+                Fotografia extremamente detalhada, composição profissional,
+                iluminação cinematográfica, foco preciso no personagem,
+                textura natural da pele, profundidade de campo e qualidade 8K.
+            </p>
+
+            <button class="copy" onclick="copiar('prompt3')">
+                📋 Copiar Prompt
+            </button>
+        </div>
+
+    </section>
+
+
+    <script>
+
+        function tema(nome) {
+
+            document.body.classList.remove(
+                "light",
+                "purple",
+                "red"
+            );
+
+            if (nome !== "dark") {
+                document.body.classList.add(nome);
+            }
+        }
+
+
+        function copiar(id) {
+
+            const texto = document.getElementById(id).innerText;
+
+            navigator.clipboard.writeText(texto);
+
+            alert("Prompt copiado! ✅");
+        }
+
+    </script>
+
+</body>
+  </html>
