@@ -16,12 +16,13 @@
 
         body {
             background:
-                radial-gradient(circle at 50% 0%, rgba(150, 0, 20, 0.16), transparent 35%),
+                radial-gradient(circle at 50% 0%, rgba(190, 0, 35, 0.20), transparent 35%),
+                radial-gradient(circle at 10% 90%, rgba(100, 0, 20, 0.16), transparent 30%),
                 #050507;
             color: #f5f5f5;
             min-height: 100vh;
             padding: 25px 18px 50px;
-            transition: 0.3s;
+            transition: 0.4s ease;
         }
 
         body::before {
@@ -30,7 +31,10 @@
             inset: 0;
             pointer-events: none;
             background:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+                linear-gradient(
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                );
             background-size: 100% 4px;
             opacity: 0.18;
             z-index: -1;
@@ -51,26 +55,14 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             text-shadow:
-                0 0 5px #ffffff,
-                0 0 15px rgba(255, 0, 35, 0.45);
-        }
-
-        h1::after {
-            content: "LUXE LAB";
-            position: absolute;
-            left: 2px;
-            top: 2px;
-            color: #e5092f;
-            opacity: 0.45;
-            z-index: -1;
-            transform: translate(3px, 2px);
+                0 0 5px #fff,
+                0 0 15px rgba(229, 9, 47, 0.45);
         }
 
         .subtitle {
-            color: #888;
+            color: #999;
             font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .controls {
@@ -81,24 +73,21 @@
             margin-bottom: 35px;
         }
 
-        .controls button {
-            position: relative;
-            border: 1px solid #691020;
+        button {
+            border: 1px solid #641020;
             padding: 13px 18px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            background: linear-gradient(145deg, #17171c, #0b0b0e);
+            background: linear-gradient(145deg, #19191f, #0b0b0e);
             color: #ddd;
             font-weight: bold;
-            letter-spacing: 0.5px;
-            transition: 0.25s;
-            box-shadow: 0 0 0 rgba(255, 0, 40, 0);
+            transition: 0.25s ease;
         }
 
-        .controls button:hover {
+        button:hover {
             color: #fff;
             border-color: #e5092f;
-            box-shadow: 0 0 18px rgba(229, 9, 47, 0.35);
+            box-shadow: 0 0 18px rgba(229, 9, 47, 0.4);
             transform: translateY(-2px);
         }
 
@@ -113,14 +102,18 @@
             position: relative;
             overflow: hidden;
             background:
-                linear-gradient(145deg, rgba(28, 10, 14, 0.96), rgba(8, 8, 11, 0.98));
+                linear-gradient(
+                    145deg,
+                    rgba(28, 9, 14, 0.97),
+                    rgba(8, 8, 11, 0.98)
+                );
             border: 1px solid #641020;
-            border-radius: 5px;
+            border-radius: 6px;
             padding: 26px;
             box-shadow:
-                0 0 15px rgba(120, 0, 20, 0.12),
-                inset 0 0 25px rgba(100, 0, 20, 0.08);
-            transition: 0.3s;
+                0 0 18px rgba(120, 0, 20, 0.15),
+                inset 0 0 30px rgba(100, 0, 20, 0.07);
+            transition: 0.3s ease;
         }
 
         .card::before {
@@ -128,10 +121,10 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 45px;
+            width: 55px;
             height: 3px;
             background: #e5092f;
-            box-shadow: 0 0 12px #e5092f;
+            box-shadow: 0 0 14px #e5092f;
         }
 
         .card::after {
@@ -141,32 +134,27 @@
             right: 18px;
             color: #e5092f;
             font-size: 18px;
-            opacity: 0.7;
+            opacity: 0.75;
             text-shadow: 0 0 10px #e5092f;
         }
 
         .card:hover {
             border-color: #b51631;
             box-shadow:
-                0 0 25px rgba(229, 9, 47, 0.18),
-                inset 0 0 30px rgba(100, 0, 20, 0.1);
+                0 0 28px rgba(229, 9, 47, 0.20),
+                inset 0 0 30px rgba(100, 0, 20, 0.10);
             transform: translateY(-2px);
         }
 
         .card h2 {
             margin-bottom: 16px;
             font-size: 25px;
-            color: #f4f4f4;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card h2::first-letter {
-            color: #e5092f;
+            color: #f5f5f5;
+            letter-spacing: 0.5px;
         }
 
         .card p {
-            color: #bdbdbd;
+            color: #c2c2c2;
             line-height: 1.75;
             font-size: 15px;
         }
@@ -174,93 +162,146 @@
         .copy {
             margin-top: 20px;
             padding: 13px 20px;
-            border-radius: 3px;
+            border-radius: 4px;
             border: 1px solid #e5092f;
-            background: linear-gradient(135deg, #e5092f, #8c071d);
-            color: white;
+            background: linear-gradient(135deg, #e5092f, #85071c);
+            color: #fff;
             font-weight: 900;
             letter-spacing: 0.5px;
-            cursor: pointer;
-            box-shadow: 0 0 12px rgba(229, 9, 47, 0.25);
-            transition: 0.25s;
+            box-shadow: 0 0 13px rgba(229, 9, 47, 0.28);
         }
 
         .copy:hover {
-            background: linear-gradient(135deg, #ff1744, #b00825);
-            box-shadow: 0 0 22px rgba(229, 9, 47, 0.55);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #ff1744, #a50724);
+            box-shadow: 0 0 23px rgba(229, 9, 47, 0.55);
         }
 
-        /* ===== TEMA PRINCIPAL ===== */
+        /* =========================
+           DARK ROMANCE
+        ========================= */
 
         body.dark {
             background:
-                radial-gradient(circle at 50% -10%, rgba(229, 9, 47, 0.22), transparent 38%),
-                radial-gradient(circle at 0% 100%, rgba(100, 0, 20, 0.15), transparent 30%),
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(229, 9, 47, 0.22),
+                    transparent 38%
+                ),
+                radial-gradient(
+                    circle at 0% 100%,
+                    rgba(100, 0, 20, 0.18),
+                    transparent 30%
+                ),
                 #050507;
         }
 
-        /* ===== LUA & ROSAS ===== */
+        /* =========================
+           LUA & ROSAS
+        ========================= */
 
         body.light {
             background:
-                radial-gradient(circle at 80% 0%, rgba(229, 9, 47, 0.18), transparent 30%),
-                #080709;
-            color: #f3e8ea;
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(190, 0, 35, 0.20),
+                    transparent 32%
+                ),
+                #070608;
         }
 
         body.light .card {
             border-color: #722033;
-            background: linear-gradient(145deg, #180b10, #090709);
         }
 
         body.light .subtitle {
             color: #a78c92;
         }
 
-        /* ===== MORCEGOS & LUA ===== */
+        /* =========================
+           MORCEGOS & LUA
+        ========================= */
 
         body.purple {
             background:
-                radial-gradient(circle at 70% 5%, rgba(110, 0, 40, 0.28), transparent 28%),
+                radial-gradient(
+                    circle at 70% 5%,
+                    rgba(100, 0, 45, 0.30),
+                    transparent 30%
+                ),
                 #040406;
         }
 
         body.purple .card {
             border-color: #75132a;
-            background: linear-gradient(145deg, #120812, #060608);
+            background:
+                linear-gradient(
+                    145deg,
+                    #130812,
+                    #060608
+                );
         }
 
-        body.purple .card h2 {
-            color: #eeeeee;
-        }
-
-        /* ===== DARK LOVE ===== */
+        /* =========================
+           DARK LOVE
+        ========================= */
 
         body.red {
             background:
-                radial-gradient(circle at 50% 0%, rgba(255, 0, 35, 0.25), transparent 38%),
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255, 0, 35, 0.27),
+                    transparent 38%
+                ),
                 #050304;
         }
 
         body.red .card {
             border-color: #a00d27;
-            background: linear-gradient(145deg, #21070d, #090507);
-            box-shadow: 0 0 20px rgba(180, 0, 30, 0.16);
+            background:
+                linear-gradient(
+                    145deg,
+                    #21070d,
+                    #090507
+                );
+            box-shadow:
+                0 0 22px rgba(180, 0, 30, 0.18);
         }
 
-        body.red .card h2 {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(255, 0, 40, 0.35);
+        /* =========================
+           DETALHES DECORATIVOS
+        ========================= */
+
+        body.dark::before {
+            content: "☾   🥀";
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            font-size: 25px;
+            letter-spacing: 5px;
+            opacity: 0.5;
+            pointer-events: none;
         }
 
-        /* ===== DETALHES ===== */
+        body.dark::after {
+            content: "🦇";
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 22px;
+            opacity: 0.45;
+            pointer-events: none;
+        }
 
         .accent {
             color: #e5092f;
         }
 
+        /* =========================
+           CELULAR
+        ========================= */
+
         @media (max-width: 600px) {
+
             body {
                 padding: 20px 12px 40px;
             }
@@ -272,6 +313,10 @@
 
             .subtitle {
                 font-size: 11px;
+            }
+
+            .controls {
+                gap: 10px;
             }
 
             .controls button {
@@ -290,6 +335,10 @@
             .card p {
                 font-size: 14px;
             }
+
+            .copy {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -297,103 +346,142 @@
 <body>
 
     <header>
-        <h1>LUXE LAB</h1>
+
+        <h1>✨ LUXE LAB</h1>
+
         <p class="subtitle">
             Prompts exclusivos • Colaborador: @aiko_seong
         </p>
+
     </header>
+
 
     <div class="controls">
 
         <button onclick="tema('dark')">
-            🖤 DARK GLITCH
+            🖤 Dark Romance
         </button>
 
         <button onclick="tema('light')">
-            🌙 LUA & ROSAS
+            🌙 Lua & Rosas
         </button>
 
         <button onclick="tema('purple')">
-            🦇 MORCEGOS & LUA
+            🦇 Morcegos & Lua
         </button>
 
         <button onclick="tema('red')">
-            🥀 DARK LOVE
+            🥀 Dark Love
         </button>
 
     </div>
 
+
     <section class="prompts">
 
+
+        <!-- PROMPT REALISTA -->
+
         <div class="card">
+
             <h2>🎨 Prompt Realista</h2>
 
             <p id="prompt1">
-                Crie uma imagem ultra-realista, com iluminação cinematográfica,
-                detalhes naturais da pele, sombras suaves, alta definição,
-                profundidade de campo e aparência profissional.
+                Crie uma imagem ultra-realista, com iluminação
+                cinematográfica, detalhes naturais da pele, sombras
+                suaves, alta definição, profundidade de campo e
+                aparência profissional.
             </p>
 
             <button class="copy" onclick="copiar('prompt1')">
-                📋 COPIAR PROMPT
+                📋 Copiar Prompt
             </button>
+
         </div>
 
+
+        <!-- PROMPT 3D -->
+
         <div class="card">
+
             <h2>🔥 Prompt 3D</h2>
 
             <p id="prompt2">
                 Crie um personagem em 3D realista, com materiais PBR,
-                iluminação ambiente, sombras realistas, alto nível de detalhes,
-                renderização cinematográfica e aparência de render do Blender.
+                iluminação ambiente, sombras realistas, alto nível
+                de detalhes, renderização cinematográfica e aparência
+                de render do Blender.
             </p>
 
             <button class="copy" onclick="copiar('prompt2')">
-                📋 COPIAR PROMPT
+                📋 Copiar Prompt
             </button>
+
         </div>
 
+
+        <!-- PROMPT FOTOGRÁFICO -->
+
         <div class="card">
+
             <h2>📸 Prompt Fotográfico</h2>
 
             <p id="prompt3">
-                Fotografia extremamente detalhada, composição profissional,
-                iluminação cinematográfica, foco preciso no personagem,
-                textura natural da pele, profundidade de campo e qualidade 8K.
+                Fotografia extremamente detalhada, composição
+                profissional, iluminação cinematográfica, foco
+                preciso no personagem, textura natural da pele,
+                profundidade de campo e qualidade 8K.
             </p>
 
             <button class="copy" onclick="copiar('prompt3')">
-                📋 COPIAR PROMPT
+                📋 Copiar Prompt
             </button>
+
         </div>
 
+
     </section>
+
 
     <script>
 
         function tema(nome) {
 
             document.body.classList.remove(
+                "dark",
                 "light",
                 "purple",
                 "red"
             );
 
-            if (nome !== "dark") {
-                document.body.classList.add(nome);
-            }
+            document.body.classList.add(nome);
+
         }
+
 
         function copiar(id) {
 
-            const texto = document.getElementById(id).innerText;
+            const elemento = document.getElementById(id);
 
-            navigator.clipboard.writeText(texto);
+            const texto = elemento.innerText;
 
-            alert("Prompt copiado! ✅");
+            navigator.clipboard.writeText(texto)
+                .then(function() {
+
+                    alert("Prompt copiado! ✅");
+
+                })
+                .catch(function() {
+
+                    alert("Não foi possível copiar o prompt.");
+
+                });
+
         }
 
     </script>
 
 </body>
 </html>
+
+<!-- Depois: você prefere a música automática ou um botão PLAY discreto? -->
