@@ -19,13 +19,14 @@ html {
 
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 8%, rgba(180,0,25,.25), transparent 28%),
-        radial-gradient(circle at 10% 40%, rgba(90,0,15,.22), transparent 30%),
-        linear-gradient(180deg, #160004 0%, #080204 55%, #020102 100%);
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    background:
+        radial-gradient(circle at 50% 5%, rgba(255,0,40,.30), transparent 28%),
+        radial-gradient(circle at 15% 35%, rgba(150,0,25,.20), transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(120,0,20,.16), transparent 30%),
+        linear-gradient(180deg, #190004 0%, #090204 55%, #010101 100%);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* =========================
@@ -37,67 +38,170 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background:
-        radial-gradient(circle, rgba(255,0,45,.10) 1px, transparent 1px);
-    background-size: 45px 45px;
-    opacity: .25;
+    background-image:
+        radial-gradient(circle, rgba(255,0,40,.14) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: .28;
     z-index: 0;
 }
 
 /* =========================
-   MORCEGOS
+   MORCEGOS GRANDES
 ========================= */
 
 .bat {
     position: fixed;
-    font-size: 25px;
-    opacity: .55;
     z-index: 1;
     pointer-events: none;
-    animation: fly 8s linear infinite;
+    font-size: 65px;
+    opacity: .75;
+    filter:
+        drop-shadow(0 0 7px #ff003c)
+        drop-shadow(0 0 18px rgba(255,0,50,.55));
+    animation: batFly 9s linear infinite;
 }
 
 .bat1 {
-    top: 18%;
-    left: -50px;
-    animation-delay: 0s;
+    top: 15%;
+    left: -100px;
 }
 
 .bat2 {
-    top: 38%;
-    left: -80px;
-    font-size: 19px;
+    top: 40%;
+    left: -140px;
+    font-size: 85px;
     animation-delay: 3s;
 }
 
 .bat3 {
-    top: 65%;
-    left: -70px;
-    font-size: 22px;
-    animation-delay: 5s;
+    top: 68%;
+    left: -120px;
+    font-size: 58px;
+    animation-delay: 6s;
 }
 
-@keyframes fly {
+@keyframes batFly {
+
     0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(-8deg);
+    }
+
+    25% {
+        transform:
+            translateX(25vw)
+            translateY(-45px)
+            rotate(8deg);
     }
 
     50% {
-        transform: translateX(55vw) translateY(-35px) rotate(-5deg);
+        transform:
+            translateX(55vw)
+            translateY(35px)
+            rotate(-5deg);
+    }
+
+    75% {
+        transform:
+            translateX(80vw)
+            translateY(-30px)
+            rotate(7deg);
     }
 
     100% {
-        transform: translateX(115vw) translateY(15px) rotate(5deg);
+        transform:
+            translateX(125vw)
+            translateY(20px)
+            rotate(-5deg);
     }
 }
 
 /* =========================
-   CONTEÚDO
+   GOTAS DE SANGUE
+========================= */
+
+.blood {
+    position: fixed;
+    z-index: 1;
+    pointer-events: none;
+    width: 7px;
+    height: 35px;
+    background: linear-gradient(#ff003c, #8b001d);
+    border-radius: 0 0 8px 8px;
+    box-shadow:
+        0 0 8px #ff003c,
+        0 0 18px rgba(255,0,45,.7);
+    animation: bloodDrop linear infinite;
+}
+
+.blood:nth-of-type(4) {
+    left: 12%;
+    top: -45px;
+    animation-duration: 5s;
+}
+
+.blood:nth-of-type(5) {
+    left: 29%;
+    top: -70px;
+    height: 55px;
+    animation-duration: 7s;
+    animation-delay: 1s;
+}
+
+.blood:nth-of-type(6) {
+    left: 51%;
+    top: -50px;
+    height: 42px;
+    animation-duration: 6s;
+    animation-delay: 2s;
+}
+
+.blood:nth-of-type(7) {
+    left: 73%;
+    top: -80px;
+    height: 65px;
+    animation-duration: 8s;
+    animation-delay: 1.5s;
+}
+
+.blood:nth-of-type(8) {
+    left: 90%;
+    top: -40px;
+    height: 30px;
+    animation-duration: 5.5s;
+    animation-delay: 3s;
+}
+
+@keyframes bloodDrop {
+
+    0% {
+        transform: translateY(-80px) scaleY(.5);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: .9;
+    }
+
+    100% {
+        transform: translateY(110vh) scaleY(1.25);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CONTAINER
 ========================= */
 
 .container {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     max-width: 720px;
     margin: auto;
@@ -105,7 +209,7 @@ body::before {
 }
 
 /* =========================
-   LOGO
+   CABEÇALHO
 ========================= */
 
 header {
@@ -116,55 +220,69 @@ header {
 .logo {
     position: relative;
     display: inline-block;
-    font-size: clamp(42px, 12vw, 72px);
+    font-size: clamp(45px, 13vw, 76px);
     font-weight: 900;
     letter-spacing: 4px;
     color: #fff;
+
     text-shadow:
         0 0 5px #fff,
-        0 0 15px #ff003c,
-        0 0 30px #ff003c,
+        0 0 12px #ff003c,
+        0 0 25px #ff003c,
         0 0 55px #b00025;
 }
 
-/* sangue escorrendo */
+/* sangue saindo das letras */
 
-.logo::after {
-    content: "";
+.logo .drip {
     position: absolute;
-    left: 25%;
-    top: 85%;
-    width: 8px;
-    height: 35px;
-    border-radius: 0 0 8px 8px;
-    background: #d90032;
-    box-shadow:
-        30px 5px 0 #a90028,
-        67px -2px 0 #e00035,
-        110px 8px 0 #9c0023;
-    filter: drop-shadow(0 0 6px #ff003c);
-    animation: blood 3s ease-in-out infinite;
 }
 
-@keyframes blood {
+/* gotas intensas embaixo do logo */
+
+.logo::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    bottom: -30px;
+    width: 9px;
+    height: 48px;
+    background: linear-gradient(#ff1748, #780018);
+    border-radius: 0 0 10px 10px;
+
+    box-shadow:
+        48px 5px 0 #c9002f,
+        91px -3px 0 #ff1748,
+        138px 8px 0 #8c001d,
+        185px -5px 0 #d60034;
+
+    filter:
+        drop-shadow(0 0 7px #ff003c)
+        drop-shadow(0 0 15px #ff003c);
+
+    animation: intenseBlood 2.8s ease-in-out infinite;
+}
+
+@keyframes intenseBlood {
+
     0%,100% {
         transform: scaleY(.65);
-        opacity: .75;
+        opacity: .7;
     }
 
     50% {
-        transform: scaleY(1.25);
+        transform: scaleY(1.35);
         opacity: 1;
     }
 }
 
 .subtitle {
-    margin-top: 30px;
-    color: #b99da2;
-    font-size: 15px;
+    margin-top: 35px;
+    color: #c2aeb2;
+    font-size: 14px;
     letter-spacing: 4px;
+    line-height: 1.9;
     text-transform: uppercase;
-    line-height: 1.8;
 }
 
 /* =========================
@@ -176,67 +294,78 @@ header {
     background:
         linear-gradient(
             145deg,
-            rgba(45,0,9,.92),
-            rgba(8,2,4,.96)
+            rgba(45,0,10,.94),
+            rgba(6,1,3,.98)
         );
 
-    border: 1px solid #8e1028;
+    border: 1px solid #9b102b;
     border-radius: 10px;
     padding: 48px 38px 40px;
+
     box-shadow:
-        0 0 25px rgba(170,0,35,.15),
-        inset 0 0 30px rgba(150,0,30,.06);
+        0 0 25px rgba(255,0,45,.16),
+        0 0 70px rgba(120,0,25,.08),
+        inset 0 0 35px rgba(150,0,30,.08);
+
     overflow: hidden;
 }
 
-/* linha vermelha superior */
+/* barra vermelha */
 
 .card::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 125px;
+    width: 130px;
     height: 6px;
+
     background: #ff003c;
+
     box-shadow:
         0 0 10px #ff003c,
-        0 0 25px #ff003c;
+        0 0 25px #ff003c,
+        0 0 45px #ff003c;
 }
 
-/* brilho no canto */
+/* estrela */
 
 .card::after {
     content: "✦";
     position: absolute;
     right: 28px;
     top: 25px;
+
     color: #ff1748;
-    font-size: 30px;
+    font-size: 32px;
+
     text-shadow:
         0 0 8px #ff003c,
-        0 0 20px #ff003c;
-    animation: sparkle 2s infinite alternate;
+        0 0 20px #ff003c,
+        0 0 35px #ff003c;
+
+    animation: sparkle 1.8s infinite alternate;
 }
 
 @keyframes sparkle {
+
     from {
-        opacity: .4;
-        transform: scale(.8) rotate(0deg);
+        opacity: .35;
+        transform: scale(.8) rotate(-8deg);
     }
 
     to {
         opacity: 1;
-        transform: scale(1.15) rotate(12deg);
+        transform: scale(1.2) rotate(12deg);
     }
 }
 
 /* =========================
-   TÍTULO DO PROMPT
+   TÍTULO
 ========================= */
 
 .card h2 {
-    font-size: clamp(30px, 7vw, 48px);
+    font-size: clamp(32px, 8vw, 50px);
     line-height: 1.15;
     margin-bottom: 45px;
     color: #fff;
@@ -245,13 +374,8 @@ header {
 
     text-shadow:
         0 0 5px #fff,
-        0 0 12px rgba(255,0,50,.8);
-}
-
-/* pequena aparência de sangue */
-
-.card h2::first-letter {
-    filter: drop-shadow(0 0 8px #ff003c);
+        0 0 13px rgba(255,0,55,.8),
+        0 0 25px rgba(255,0,55,.3);
 }
 
 /* =========================
@@ -259,7 +383,7 @@ header {
 ========================= */
 
 .card p {
-    color: #d7c6c9;
+    color: #d9c7ca;
     font-size: 20px;
     line-height: 1.9;
     margin-bottom: 38px;
@@ -270,9 +394,10 @@ header {
 ========================= */
 
 .copy {
+    width: 100%;
     border: 1px solid #ff1748;
     border-radius: 5px;
-    padding: 18px 30px;
+    padding: 19px 25px;
 
     background:
         linear-gradient(
@@ -289,16 +414,9 @@ header {
 
     box-shadow:
         0 0 12px rgba(255,0,55,.55),
-        0 0 30px rgba(255,0,55,.18);
+        0 0 30px rgba(255,0,55,.22);
 
     transition: .25s;
-}
-
-.copy:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 0 18px rgba(255,0,55,.8),
-        0 0 40px rgba(255,0,55,.3);
 }
 
 .copy:active {
@@ -306,18 +424,22 @@ header {
 }
 
 /* =========================
-   CONTROLE DA MÚSICA
+   BOTÃO MÚSICA
 ========================= */
 
 .music {
     display: block;
-    margin: 35px auto 0;
-    border: 1px solid #6f1023;
-    background: rgba(25,2,7,.8);
-    color: #d8bfc4;
+    margin: 28px auto 0;
+
+    border: 1px solid #781226;
+    background: rgba(20,2,7,.9);
+
+    color: #d9c1c6;
+
     border-radius: 5px;
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 12px 22px;
+
+    font-size: 13px;
     cursor: pointer;
 }
 
@@ -328,9 +450,10 @@ header {
 footer {
     text-align: center;
     margin-top: 55px;
-    color: #6e555b;
+
+    color: #765961;
     font-size: 12px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 /* =========================
@@ -344,16 +467,15 @@ footer {
     }
 
     header {
-        margin-bottom: 105px;
+        margin-bottom: 110px;
     }
 
     .logo {
-        font-size: 46px;
-        letter-spacing: 2px;
+        font-size: 47px;
     }
 
     .subtitle {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 3px;
     }
 
@@ -362,9 +484,7 @@ footer {
     }
 
     .card h2 {
-        font-size: 34px;
-        margin-bottom: 42px;
-        max-width: 85%;
+        font-size: 35px;
     }
 
     .card p {
@@ -372,9 +492,12 @@ footer {
         line-height: 1.9;
     }
 
-    .copy {
-        width: 100%;
-        font-size: 16px;
+    .bat {
+        font-size: 55px;
+    }
+
+    .bat2 {
+        font-size: 70px;
     }
 }
 </style>
@@ -382,16 +505,25 @@ footer {
 
 <body>
 
-<!-- MORCEGOS -->
+<!-- MORCEGOS GRANDES -->
 <div class="bat bat1">🦇</div>
 <div class="bat bat2">🦇</div>
 <div class="bat bat3">🦇</div>
+
+<!-- SANGUE -->
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
 
 <div class="container">
 
 <header>
 
-    <h1 class="logo">LUXE LAB</h1>
+    <h1 class="logo">
+        LUXE LAB
+    </h1>
 
     <p class="subtitle">
         PROMPTS EXCLUSIVOS • COLABORADOR:<br>
@@ -403,7 +535,10 @@ footer {
 <!-- ÚNICA CAIXA -->
 <section class="card">
 
-    <h2>🎨 PROMPT<br>REALISTA</h2>
+    <h2>
+        🎨 PROMPT<br>
+        REALISTA
+    </h2>
 
     <p id="prompt">
         Crie uma imagem ultra-realista, com iluminação
@@ -419,7 +554,7 @@ footer {
 </section>
 
 <!-- MÚSICA -->
-<audio id="musica" loop>
+<audio id="musica" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
@@ -436,34 +571,50 @@ footer {
 <script>
 
 /* =========================
-   COPIAR PROMPT
-========================= */
-
-function copiarPrompt() {
-
-    const texto = document.getElementById("prompt").innerText;
-
-    navigator.clipboard.writeText(texto).then(() => {
-
-        const botao = document.querySelector(".copy");
-
-        botao.innerHTML = "✅ &nbsp; PROMPT COPIADO";
-
-        setTimeout(() => {
-            botao.innerHTML = "📋 &nbsp; COPIAR PROMPT";
-        }, 2000);
-
-    });
-
-}
-
-
-/* =========================
-   MÚSICA
+   MÚSICA AO PRIMEIRO TOQUE
 ========================= */
 
 const musica = document.getElementById("musica");
 const botaoMusica = document.querySelector(".music");
+
+let musicaIniciada = false;
+
+function iniciarMusica() {
+
+    if (musicaIniciada) return;
+
+    musica.play()
+        .then(() => {
+
+            musicaIniciada = true;
+            botaoMusica.innerHTML = "⏸️ Pausar música";
+
+        })
+        .catch(() => {
+
+            /*
+            Se o navegador bloquear o primeiro toque,
+            o botão de música continua disponível.
+            */
+
+        });
+}
+
+/*
+   Qualquer primeiro toque na tela
+   tenta iniciar a música.
+*/
+
+document.addEventListener(
+    "pointerdown",
+    iniciarMusica,
+    { once: true }
+);
+
+
+/* =========================
+   BOTÃO DA MÚSICA
+========================= */
 
 function controlarMusica() {
 
@@ -471,16 +622,47 @@ function controlarMusica() {
 
         musica.play();
 
-        botaoMusica.innerHTML = "⏸️ Pausar música";
+        musicaIniciada = true;
+
+        botaoMusica.innerHTML =
+            "⏸️ Pausar música";
 
     } else {
 
         musica.pause();
 
-        botaoMusica.innerHTML = "🎵 Tocar música";
-
+        botaoMusica.innerHTML =
+            "🎵 Tocar música";
     }
+}
 
+
+/* =========================
+   COPIAR PROMPT
+========================= */
+
+function copiarPrompt() {
+
+    const texto =
+        document.getElementById("prompt").innerText;
+
+    navigator.clipboard.writeText(texto)
+        .then(() => {
+
+            const botao =
+                document.querySelector(".copy");
+
+            botao.innerHTML =
+                "✅ &nbsp; PROMPT COPIADO";
+
+            setTimeout(() => {
+
+                botao.innerHTML =
+                    "📋 &nbsp; COPIAR PROMPT";
+
+            }, 2000);
+
+        });
 }
 
 </script>
