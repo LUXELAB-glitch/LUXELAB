@@ -11,215 +11,314 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background: #0b0b0f;
-            color: white;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(150, 0, 20, 0.16), transparent 35%),
+                #050507;
+            color: #f5f5f5;
             min-height: 100vh;
-            padding: 25px;
+            padding: 25px 18px 50px;
             transition: 0.3s;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 100% 4px;
+            opacity: 0.18;
+            z-index: -1;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
         h1 {
-            font-size: 32px;
+            position: relative;
+            display: inline-block;
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: 5px;
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 5px #ffffff,
+                0 0 15px rgba(255, 0, 35, 0.45);
+        }
+
+        h1::after {
+            content: "LUXE LAB";
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            color: #e5092f;
+            opacity: 0.45;
+            z-index: -1;
+            transform: translate(3px, 2px);
         }
 
         .subtitle {
-            color: #aaa;
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .controls {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        button {
-            border: none;
-            padding: 12px 18px;
-            border-radius: 10px;
+        .controls button {
+            position: relative;
+            border: 1px solid #691020;
+            padding: 13px 18px;
+            border-radius: 4px;
             cursor: pointer;
-            background: #25252f;
-            color: white;
+            background: linear-gradient(145deg, #17171c, #0b0b0e);
+            color: #ddd;
             font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: 0.25s;
+            box-shadow: 0 0 0 rgba(255, 0, 40, 0);
         }
 
-        button:hover {
-            opacity: 0.8;
+        .controls button:hover {
+            color: #fff;
+            border-color: #e5092f;
+            box-shadow: 0 0 18px rgba(229, 9, 47, 0.35);
+            transform: translateY(-2px);
         }
 
         .prompts {
             max-width: 900px;
             margin: auto;
             display: grid;
-            gap: 20px;
+            gap: 25px;
         }
 
         .card {
-            background: #15151d;
-            border: 1px solid #292936;
-            border-radius: 15px;
-            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(145deg, rgba(28, 10, 14, 0.96), rgba(8, 8, 11, 0.98));
+            border: 1px solid #641020;
+            border-radius: 5px;
+            padding: 26px;
+            box-shadow:
+                0 0 15px rgba(120, 0, 20, 0.12),
+                inset 0 0 25px rgba(100, 0, 20, 0.08);
+            transition: 0.3s;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: #e5092f;
+            box-shadow: 0 0 12px #e5092f;
+        }
+
+        .card::after {
+            content: "✦";
+            position: absolute;
+            top: 13px;
+            right: 18px;
+            color: #e5092f;
+            font-size: 18px;
+            opacity: 0.7;
+            text-shadow: 0 0 10px #e5092f;
+        }
+
+        .card:hover {
+            border-color: #b51631;
+            box-shadow:
+                0 0 25px rgba(229, 9, 47, 0.18),
+                inset 0 0 30px rgba(100, 0, 20, 0.1);
+            transform: translateY(-2px);
         }
 
         .card h2 {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            font-size: 25px;
+            color: #f4f4f4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card h2::first-letter {
+            color: #e5092f;
         }
 
         .card p {
-            color: #ccc;
-            line-height: 1.6;
+            color: #bdbdbd;
+            line-height: 1.75;
+            font-size: 15px;
         }
 
         .copy {
-            margin-top: 15px;
-            background: #ffffff;
-            color: #000000;
+            margin-top: 20px;
+            padding: 13px 20px;
+            border-radius: 3px;
+            border: 1px solid #e5092f;
+            background: linear-gradient(135deg, #e5092f, #8c071d);
+            color: white;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(229, 9, 47, 0.25);
+            transition: 0.25s;
         }
 
-        /* TEMA CLARO */
+        .copy:hover {
+            background: linear-gradient(135deg, #ff1744, #b00825);
+            box-shadow: 0 0 22px rgba(229, 9, 47, 0.55);
+            transform: translateY(-2px);
+        }
+
+        /* ===== TEMA PRINCIPAL ===== */
+
+        body.dark {
+            background:
+                radial-gradient(circle at 50% -10%, rgba(229, 9, 47, 0.22), transparent 38%),
+                radial-gradient(circle at 0% 100%, rgba(100, 0, 20, 0.15), transparent 30%),
+                #050507;
+        }
+
+        /* ===== LUA & ROSAS ===== */
 
         body.light {
-            background: #160b0e;
-            color: #f1e4e6;
-        }
-
-        body.light .subtitle {
-            color: #b9969d;
+            background:
+                radial-gradient(circle at 80% 0%, rgba(229, 9, 47, 0.18), transparent 30%),
+                #080709;
+            color: #f3e8ea;
         }
 
         body.light .card {
-            background: #211014;
-            border-color: #5c2731;
+            border-color: #722033;
+            background: linear-gradient(145deg, #180b10, #090709);
         }
 
-        body.light .card p {
-            color: #d7c0c4;
+        body.light .subtitle {
+            color: #a78c92;
         }
 
-        /* TEMA VINHO & DOURADO */
+        /* ===== MORCEGOS & LUA ===== */
 
         body.purple {
-            background: #0b0708;
+            background:
+                radial-gradient(circle at 70% 5%, rgba(110, 0, 40, 0.28), transparent 28%),
+                #040406;
         }
 
         body.purple .card {
-            background: #1b0b10;
-            border-color: #D4AF37;
+            border-color: #75132a;
+            background: linear-gradient(145deg, #120812, #060608);
         }
 
-        /* TEMA DARK LOVE */
+        body.purple .card h2 {
+            color: #eeeeee;
+        }
+
+        /* ===== DARK LOVE ===== */
 
         body.red {
-            background: #120609;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(255, 0, 35, 0.25), transparent 38%),
+                #050304;
         }
 
         body.red .card {
-            background: #260b12;
-            border-color: #7a1726;
+            border-color: #a00d27;
+            background: linear-gradient(145deg, #21070d, #090507);
+            box-shadow: 0 0 20px rgba(180, 0, 30, 0.16);
         }
-   /* ===== DARK ROMANCE LUXO ===== */
 
-body.dark {
-    background:
-        radial-gradient(circle at 85% 12%, rgba(212,175,55,0.12), transparent 18%),
-        radial-gradient(circle at 15% 85%, rgba(92,15,27,0.28), transparent 25%),
-        #0b0708;
-    color: #f3e6e8;
-}
+        body.red .card h2 {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 0, 40, 0.35);
+        }
 
-body.dark .subtitle {
-    color: #cfa1a8;
-}
+        /* ===== DETALHES ===== */
 
-body.dark .card {
-    background: linear-gradient(145deg, #1b0b10, #100709);
-    border: 1px solid #d4af37;
-    box-shadow: 0 0 22px rgba(212,175,55,0.18);
-}
+        .accent {
+            color: #e5092f;
+        }
 
-body.dark .card h2 {
-    color: #d4af37;
-    text-shadow: 0 0 8px rgba(212,175,55,0.35);
-}
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px 40px;
+            }
 
-body.dark .card p {
-    color: #e9cfd4;
-}
+            h1 {
+                font-size: 30px;
+                letter-spacing: 3px;
+            }
 
-body.dark button {
-    background: linear-gradient(135deg, #5c0f1b, #7a1726);
-    border: 1px solid #d4af37;
-    color: #f4d77d;
-    box-shadow: 0 0 10px rgba(212,175,55,0.18);
-}
+            .subtitle {
+                font-size: 11px;
+            }
 
-body.dark button:hover {
-    background: linear-gradient(135deg, #7a1726, #5c0f1b);
-    box-shadow: 0 0 16px rgba(212,175,55,0.35);
-}
+            .controls button {
+                padding: 12px 13px;
+                font-size: 12px;
+            }
 
-body.dark .accent {
-    color: #d4af37;
-}
+            .card {
+                padding: 21px;
+            }
 
-/* Lua crescente + rosas + morcegos */
-body.dark::before {
-    content: "☾   🥀";
-    position: fixed;
-    top: 18px;
-    right: 22px;
-    font-size: 30px;
-    letter-spacing: 8px;
-    opacity: 0.85;
-    pointer-events: none;
-}
+            .card h2 {
+                font-size: 21px;
+            }
 
-body.dark::after {
-    content: "🦇     🦇";
-    position: fixed;
-    bottom: 18px;
-    left: 20px;
-    font-size: 20px;
-    opacity: 0.55;
-    pointer-events: none;
-            } </style>
+            .card p {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <h1>✨ LUXE LAB</h1>
-        <p class="subtitle">Prompts exclusivos • Colaborador: @aiko_seong</p>
+        <h1>LUXE LAB</h1>
+        <p class="subtitle">
+            Prompts exclusivos • Colaborador: @aiko_seong
+        </p>
     </header>
 
     <div class="controls">
 
         <button onclick="tema('dark')">
-            🖤 Dark Romance
+            🖤 DARK GLITCH
         </button>
 
         <button onclick="tema('light')">
-            🌙 Lua & Rosas
+            🌙 LUA & ROSAS
         </button>
 
         <button onclick="tema('purple')">
-            🦇 Morcegos & Lua
+            🦇 MORCEGOS & LUA
         </button>
 
         <button onclick="tema('red')">
-            🥀 Dark Love
+            🥀 DARK LOVE
         </button>
 
     </div>
@@ -236,10 +335,9 @@ body.dark::after {
             </p>
 
             <button class="copy" onclick="copiar('prompt1')">
-                📋 Copiar Prompt
+                📋 COPIAR PROMPT
             </button>
         </div>
-
 
         <div class="card">
             <h2>🔥 Prompt 3D</h2>
@@ -251,10 +349,9 @@ body.dark::after {
             </p>
 
             <button class="copy" onclick="copiar('prompt2')">
-                📋 Copiar Prompt
+                📋 COPIAR PROMPT
             </button>
         </div>
-
 
         <div class="card">
             <h2>📸 Prompt Fotográfico</h2>
@@ -266,12 +363,11 @@ body.dark::after {
             </p>
 
             <button class="copy" onclick="copiar('prompt3')">
-                📋 Copiar Prompt
+                📋 COPIAR PROMPT
             </button>
         </div>
 
     </section>
-
 
     <script>
 
@@ -288,7 +384,6 @@ body.dark::after {
             }
         }
 
-
         function copiar(id) {
 
             const texto = document.getElementById(id).innerText;
@@ -301,4 +396,4 @@ body.dark::after {
     </script>
 
 </body>
-  </html>
+</html>
