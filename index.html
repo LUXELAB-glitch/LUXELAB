@@ -116,7 +116,7 @@
 
         body.purple .card {
             background: #1b0b10;
-            border-color: #c9a227;
+            border-color: #D4AF37;
         }
 
         /* TEMA DARK LOVE */
@@ -129,7 +129,72 @@
             background: #260b12;
             border-color: #7a1726;
         }
-    </style>
+   /* ===== DARK ROMANCE LUXO ===== */
+
+body.dark {
+    background:
+        radial-gradient(circle at 85% 12%, rgba(212,175,55,0.12), transparent 18%),
+        radial-gradient(circle at 15% 85%, rgba(92,15,27,0.28), transparent 25%),
+        #0b0708;
+    color: #f3e6e8;
+}
+
+body.dark .subtitle {
+    color: #cfa1a8;
+}
+
+body.dark .card {
+    background: linear-gradient(145deg, #1b0b10, #100709);
+    border: 1px solid #d4af37;
+    box-shadow: 0 0 22px rgba(212,175,55,0.18);
+}
+
+body.dark .card h2 {
+    color: #d4af37;
+    text-shadow: 0 0 8px rgba(212,175,55,0.35);
+}
+
+body.dark .card p {
+    color: #e9cfd4;
+}
+
+body.dark button {
+    background: linear-gradient(135deg, #5c0f1b, #7a1726);
+    border: 1px solid #d4af37;
+    color: #f4d77d;
+    box-shadow: 0 0 10px rgba(212,175,55,0.18);
+}
+
+body.dark button:hover {
+    background: linear-gradient(135deg, #7a1726, #5c0f1b);
+    box-shadow: 0 0 16px rgba(212,175,55,0.35);
+}
+
+body.dark .accent {
+    color: #d4af37;
+}
+
+/* Lua crescente + rosas + morcegos */
+body.dark::before {
+    content: "☾   🥀";
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    font-size: 30px;
+    letter-spacing: 8px;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+body.dark::after {
+    content: "🦇     🦇";
+    position: fixed;
+    bottom: 18px;
+    left: 20px;
+    font-size: 20px;
+    opacity: 0.55;
+    pointer-events: none;
+            } </style>
 </head>
 
 <body>
