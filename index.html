@@ -1,710 +1,1291 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LUXE LAB</title>
+<title>LUXE LAB - @AIKO_SEONG</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
     background:
-        radial-gradient(circle at 50% 5%, rgba(255,0,40,.30), transparent 28%),
-        radial-gradient(circle at 15% 35%, rgba(150,0,25,.20), transparent 30%),
-        radial-gradient(circle at 90% 70%, rgba(120,0,20,.16), transparent 30%),
-        linear-gradient(180deg, #190004 0%, #090204 55%, #010101 100%);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+        radial-gradient(circle at 50% 0%,rgba(255,0,45,.42),transparent 30%),
+        radial-gradient(circle at 0% 50%,rgba(180,0,30,.25),transparent 35%),
+        radial-gradient(circle at 100% 75%,rgba(150,0,25,.20),transparent 35%),
+        linear-gradient(180deg,#260006 0%,#100103 48%,#030102 100%);
+
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
+
 /* =========================
-   FUNDO
+   FUNDO ANIMADO
 ========================= */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        radial-gradient(circle, rgba(255,0,40,.14) 1px, transparent 1px);
-    background-size: 42px 42px;
-    opacity: .28;
-    z-index: 0;
+body::before{
+    content:"";
+    position:fixed;
+    inset:-20%;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(255,0,50,.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(255,0,40,.16),
+            transparent 28%
+        );
+
+    filter:blur(30px);
+    animation:bgMove 10s ease-in-out infinite alternate;
+
+    z-index:0;
 }
 
+@keyframes bgMove{
+    from{
+        transform:translate(-3%,-2%) scale(1);
+    }
+
+    to{
+        transform:translate(4%,3%) scale(1.12);
+    }
+}
+
+
 /* =========================
-   MORCEGOS GRANDES
+   PARTÍCULAS
 ========================= */
 
-.bat {
-    position: fixed;
-    z-index: 1;
-    pointer-events: none;
-    font-size: 65px;
-    opacity: .75;
+.particle{
+    position:fixed;
+    z-index:1;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:#ff1748;
+
+    box-shadow:
+        0 0 7px #ff003c,
+        0 0 14px #ff003c;
+
+    pointer-events:none;
+
+    animation:float 9s linear infinite;
+}
+
+.p1{left:12%;top:85%}
+.p2{left:30%;top:70%;animation-delay:2s}
+.p3{left:50%;top:90%;animation-delay:4s}
+.p4{left:72%;top:75%;animation-delay:1s}
+.p5{left:91%;top:85%;animation-delay:3s}
+
+@keyframes float{
+    0%{
+        transform:translateY(70px);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-600px);
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   MORCEGO
+========================= */
+
+.bat{
+    position:fixed;
+    z-index:2;
+
+    width:115px;
+    height:60px;
+
+    pointer-events:none;
+
+    opacity:.58;
+
     filter:
-        drop-shadow(0 0 7px #ff003c)
-        drop-shadow(0 0 18px rgba(255,0,50,.55));
-    animation: batFly 9s linear infinite;
+        drop-shadow(0 0 5px #ff003c)
+        drop-shadow(0 0 15px rgba(255,0,45,.45));
+
+    animation:batFly 15s linear infinite;
 }
 
-.bat1 {
-    top: 15%;
-    left: -100px;
+.bat svg{
+    width:100%;
+    height:100%;
 }
 
-.bat2 {
-    top: 40%;
-    left: -140px;
-    font-size: 85px;
-    animation-delay: 3s;
+.bat path{
+    fill:#030303;
 }
 
-.bat3 {
-    top: 68%;
-    left: -120px;
-    font-size: 58px;
-    animation-delay: 6s;
+.bat line{
+    stroke:#8e001f;
+    stroke-width:2;
+    opacity:.7;
 }
 
-@keyframes batFly {
+.bat1{
+    top:18%;
+    left:-150px;
+}
 
-    0% {
+.bat2{
+    top:62%;
+    left:-150px;
+
+    width:80px;
+    height:42px;
+
+    opacity:.4;
+
+    animation-delay:7s;
+}
+
+@keyframes batFly{
+
+    0%{
         transform:
             translateX(0)
-            translateY(0)
-            rotate(-8deg);
-    }
-
-    25% {
-        transform:
-            translateX(25vw)
-            translateY(-45px)
-            rotate(8deg);
-    }
-
-    50% {
-        transform:
-            translateX(55vw)
-            translateY(35px)
-            rotate(-5deg);
-    }
-
-    75% {
-        transform:
-            translateX(80vw)
-            translateY(-30px)
-            rotate(7deg);
-    }
-
-    100% {
-        transform:
-            translateX(125vw)
             translateY(20px)
             rotate(-5deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.58;
+    }
+
+    30%{
+        transform:
+            translateX(30vw)
+            translateY(-25px)
+            rotate(5deg);
+    }
+
+    50%{
+        transform:
+            translateX(60vw)
+            translateY(25px)
+            rotate(-4deg);
+    }
+
+    75%{
+        transform:
+            translateX(85vw)
+            translateY(-20px)
+            rotate(5deg);
+    }
+
+    100%{
+        transform:
+            translateX(125vw)
+            translateY(15px)
+            rotate(-4deg);
+        opacity:0;
     }
 }
+
 
 /* =========================
-   GOTAS DE SANGUE
+   SANGUE
 ========================= */
 
-.blood {
-    position: fixed;
-    z-index: 1;
-    pointer-events: none;
-    width: 7px;
-    height: 35px;
-    background: linear-gradient(#ff003c, #8b001d);
-    border-radius: 0 0 8px 8px;
+.blood{
+    position:fixed;
+    z-index:2;
+
+    width:5px;
+    height:42px;
+
+    background:
+        linear-gradient(#ff1748,#720016);
+
+    border-radius:0 0 8px 8px;
+
     box-shadow:
         0 0 8px #ff003c,
-        0 0 18px rgba(255,0,45,.7);
-    animation: bloodDrop linear infinite;
+        0 0 17px rgba(255,0,45,.7);
+
+    animation:blood 7s linear infinite;
+
+    pointer-events:none;
 }
 
-.blood:nth-of-type(4) {
-    left: 12%;
-    top: -45px;
-    animation-duration: 5s;
+.blood:nth-of-type(8){
+    left:12%;
 }
 
-.blood:nth-of-type(5) {
-    left: 29%;
-    top: -70px;
-    height: 55px;
-    animation-duration: 7s;
-    animation-delay: 1s;
+.blood:nth-of-type(9){
+    left:32%;
+    height:55px;
+    animation-delay:2s;
 }
 
-.blood:nth-of-type(6) {
-    left: 51%;
-    top: -50px;
-    height: 42px;
-    animation-duration: 6s;
-    animation-delay: 2s;
+.blood:nth-of-type(10){
+    left:55%;
+    height:38px;
+    animation-delay:4s;
 }
 
-.blood:nth-of-type(7) {
-    left: 73%;
-    top: -80px;
-    height: 65px;
-    animation-duration: 8s;
-    animation-delay: 1.5s;
+.blood:nth-of-type(11){
+    left:78%;
+    height:60px;
+    animation-delay:1s;
 }
 
-.blood:nth-of-type(8) {
-    left: 90%;
-    top: -40px;
-    height: 30px;
-    animation-duration: 5.5s;
-    animation-delay: 3s;
+.blood:nth-of-type(12){
+    left:92%;
+    height:30px;
+    animation-delay:3s;
 }
 
-@keyframes bloodDrop {
+@keyframes blood{
 
-    0% {
-        transform: translateY(-80px) scaleY(.5);
-        opacity: 0;
+    0%{
+        transform:translateY(-80px) scaleY(.5);
+        opacity:0;
     }
 
-    15% {
-        opacity: 1;
+    15%{
+        opacity:1;
     }
 
-    75% {
-        opacity: .9;
+    80%{
+        opacity:.7;
     }
 
-    100% {
-        transform: translateY(110vh) scaleY(1.25);
-        opacity: 0;
+    100%{
+        transform:translateY(110vh) scaleY(1.15);
+        opacity:0;
     }
 }
+
 
 /* =========================
    CONTAINER
 ========================= */
 
-.container {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 720px;
-    margin: auto;
-    padding: 55px 20px 80px;
+.container{
+    position:relative;
+    z-index:5;
+
+    width:100%;
+    max-width:700px;
+
+    margin:auto;
+
+    padding:
+        42px 20px 65px;
 }
+
 
 /* =========================
-   CABEÇALHO
+   HEADER
 ========================= */
 
-header {
-    text-align: center;
-    margin-bottom: 125px;
+header{
+    text-align:center;
+
+    margin-bottom:75px;
 }
 
-.logo {
-    position: relative;
-    display: inline-block;
-    font-size: clamp(45px, 13vw, 76px);
-    font-weight: 900;
-    letter-spacing: 4px;
-    color: #fff;
+.code{
+    font-family:monospace;
+
+    color:#ff1748;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    margin-bottom:18px;
+
+    text-shadow:
+        0 0 10px #ff003c;
+}
+
+.logo{
+    position:relative;
+
+    display:inline-block;
+
+    font-size:clamp(42px,11vw,68px);
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    color:#fff;
 
     text-shadow:
         0 0 5px #fff,
         0 0 12px #ff003c,
-        0 0 25px #ff003c,
-        0 0 55px #b00025;
+        0 0 28px #ff003c,
+        0 0 45px #85001c;
+
+    animation:logoGlow 4s ease-in-out infinite;
 }
 
-/* sangue saindo das letras */
+@keyframes logoGlow{
 
-.logo .drip {
-    position: absolute;
+    0%,100%{
+        filter:brightness(.95);
+    }
+
+    50%{
+        filter:brightness(1.2);
+    }
 }
 
-/* gotas intensas embaixo do logo */
+.logo::after{
+    content:"";
 
-.logo::before {
-    content: "";
-    position: absolute;
-    left: 8%;
-    bottom: -30px;
-    width: 9px;
-    height: 48px;
-    background: linear-gradient(#ff1748, #780018);
-    border-radius: 0 0 10px 10px;
+    position:absolute;
+
+    bottom:-13px;
+    left:10%;
+
+    width:80%;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff003c,
+            #fff,
+            #ff003c,
+            transparent
+        );
 
     box-shadow:
-        48px 5px 0 #c9002f,
-        91px -3px 0 #ff1748,
-        138px 8px 0 #8c001d,
-        185px -5px 0 #d60034;
-
-    filter:
-        drop-shadow(0 0 7px #ff003c)
-        drop-shadow(0 0 15px #ff003c);
-
-    animation: intenseBlood 2.8s ease-in-out infinite;
+        0 0 12px #ff003c;
 }
 
-@keyframes intenseBlood {
+.subtitle{
+    margin-top:29px;
 
-    0%,100% {
-        transform: scaleY(.65);
-        opacity: .7;
-    }
+    color:#cbb5ba;
 
-    50% {
-        transform: scaleY(1.35);
-        opacity: 1;
-    }
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    line-height:1.8;
+
+    text-transform:uppercase;
 }
 
-.subtitle {
-    margin-top: 35px;
-    color: #c2aeb2;
-    font-size: 14px;
-    letter-spacing: 4px;
-    line-height: 1.9;
-    text-transform: uppercase;
+.subtitle strong{
+    color:#ff1748;
+
+    text-shadow:
+        0 0 10px #ff003c;
 }
+
 
 /* =========================
-   CARD ÚNICO
+   IDENTIDADE
 ========================= */
 
-.card {
-    position: relative;
+.identity{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:14px 0;
+
+    margin-bottom:22px;
+
+    border-top:1px solid #60101e;
+    border-bottom:1px solid #60101e;
+
+    font-family:monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.identity-left{
+    color:#72565c;
+}
+
+.identity-right{
+    color:#ff1748;
+
+    text-shadow:
+        0 0 9px #ff003c;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    position:relative;
+
     background:
         linear-gradient(
             145deg,
-            rgba(45,0,10,.94),
-            rgba(6,1,3,.98)
+            rgba(65,0,11,.96),
+            rgba(22,0,5,.98) 55%,
+            rgba(5,1,2,.99)
         );
 
-    border: 1px solid #9b102b;
-    border-radius: 10px;
-    padding: 48px 38px 40px;
+    border:1px solid #8d1028;
+
+    border-radius:8px;
+
+    padding:34px 28px 30px;
 
     box-shadow:
-        0 0 25px rgba(255,0,45,.16),
-        0 0 70px rgba(120,0,25,.08),
-        inset 0 0 35px rgba(150,0,30,.08);
+        0 0 22px rgba(255,0,45,.18),
+        inset 0 0 35px rgba(255,0,45,.06);
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
-/* barra vermelha */
+.card::before{
+    content:"";
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 130px;
-    height: 6px;
+    position:absolute;
 
-    background: #ff003c;
+    top:0;
+    left:0;
+
+    width:105px;
+    height:4px;
+
+    background:#ff003c;
 
     box-shadow:
         0 0 10px #ff003c,
-        0 0 25px #ff003c,
-        0 0 45px #ff003c;
+        0 0 25px #ff003c;
+
+    animation:bar 3s ease-in-out infinite;
 }
 
-/* estrela */
+@keyframes bar{
 
-.card::after {
-    content: "✦";
-    position: absolute;
-    right: 28px;
-    top: 25px;
+    0%,100%{
+        width:80px;
+    }
 
-    color: #ff1748;
-    font-size: 32px;
+    50%{
+        width:150px;
+    }
+}
+
+.card::after{
+    content:"✦";
+
+    position:absolute;
+
+    right:22px;
+    top:17px;
+
+    color:#ff1748;
+
+    font-size:23px;
 
     text-shadow:
         0 0 8px #ff003c,
-        0 0 20px #ff003c,
-        0 0 35px #ff003c;
+        0 0 18px #ff003c;
 
-    animation: sparkle 1.8s infinite alternate;
+    animation:sparkle 2s ease-in-out infinite alternate;
 }
 
-@keyframes sparkle {
+@keyframes sparkle{
 
-    from {
-        opacity: .35;
-        transform: scale(.8) rotate(-8deg);
+    from{
+        opacity:.35;
+        transform:scale(.8) rotate(-8deg);
     }
 
-    to {
-        opacity: 1;
-        transform: scale(1.2) rotate(12deg);
+    to{
+        opacity:1;
+        transform:scale(1.1) rotate(10deg);
     }
 }
+
 
 /* =========================
-   TÍTULO
+   TOPO DO CARD
 ========================= */
 
-.card h2 {
-    font-size: clamp(32px, 8vw, 50px);
-    line-height: 1.15;
-    margin-bottom: 45px;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.card-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:27px;
+
+    padding-bottom:12px;
+
+    border-bottom:1px solid rgba(255,0,45,.2);
+
+    font-family:monospace;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    color:#73555c;
+}
+
+.card-top span:last-child{
+    color:#ff1748;
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+.card h2{
+
+    font-size:
+        clamp(30px,7vw,45px);
+
+    line-height:1.05;
+
+    margin-bottom:28px;
+
+    color:#fff;
+
+    text-transform:uppercase;
+
+    letter-spacing:-1px;
 
     text-shadow:
         0 0 5px #fff,
-        0 0 13px rgba(255,0,55,.8),
-        0 0 25px rgba(255,0,55,.3);
+        0 0 13px #ff003c,
+        0 0 25px rgba(255,0,55,.45);
 }
+
+.card h2 span{
+    color:#ff1748;
+}
+
 
 /* =========================
-   TEXTO
+   LABEL
 ========================= */
 
-.card p {
-    color: #d9c7ca;
-    font-size: 20px;
-    line-height: 1.9;
-    margin-bottom: 38px;
+.label{
+    display:block;
+
+    margin-bottom:9px;
+
+    font-family:monospace;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    color:#ff1748;
+
+    text-transform:uppercase;
 }
+
+
+/* =========================
+   PROMPT
+========================= */
+
+.prompt-box{
+    padding:19px;
+
+    margin-bottom:18px;
+
+    max-height:500px;
+
+    overflow:auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #100104,
+            #030101
+        );
+
+    border:1px solid #4f111c;
+
+    border-left:
+        3px solid #ff003c;
+
+    color:#d6c3c7;
+
+    font-size:11px;
+
+    line-height:1.75;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    box-shadow:
+        inset 0 0 25px rgba(255,0,45,.05);
+}
+
+.prompt-box::-webkit-scrollbar{
+    width:4px;
+}
+
+.prompt-box::-webkit-scrollbar-thumb{
+    background:#9d1029;
+}
+
 
 /* =========================
    BOTÃO
 ========================= */
 
-.copy {
-    width: 100%;
-    border: 1px solid #ff1748;
-    border-radius: 5px;
-    padding: 19px 25px;
+.copy{
+    width:100%;
+
+    border:1px solid #ff1748;
+
+    border-radius:4px;
+
+    padding:15px 20px;
 
     background:
         linear-gradient(
-            135deg,
+            90deg,
+            #85001c,
             #ff003c,
-            #bd002c
+            #930020
         );
 
-    color: white;
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    cursor: pointer;
+    background-size:200% auto;
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
 
     box-shadow:
-        0 0 12px rgba(255,0,55,.55),
-        0 0 30px rgba(255,0,55,.22);
+        0 0 12px rgba(255,0,55,.45),
+        0 0 25px rgba(255,0,55,.18);
 
-    transition: .25s;
+    animation:buttonGlow 4s linear infinite;
+
+    transition:.25s;
 }
 
-.copy:active {
-    transform: scale(.97);
+@keyframes buttonGlow{
+
+    to{
+        background-position:200% center;
+    }
 }
+
+.copy:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 20px #ff003c,
+        0 0 35px rgba(255,0,55,.4);
+}
+
+.copy:active{
+    transform:scale(.97);
+}
+
 
 /* =========================
-   BOTÃO MÚSICA
+   ASSINATURA
 ========================= */
 
-.music {
-    display: block;
-    margin: 28px auto 0;
+.signature{
+    text-align:center;
 
-    border: 1px solid #781226;
-    background: rgba(20,2,7,.9);
+    margin-top:30px;
 
-    color: #d9c1c6;
+    padding:17px;
 
-    border-radius: 5px;
-    padding: 12px 22px;
-
-    font-size: 13px;
-    cursor: pointer;
+    border-top:1px solid #60101e;
+    border-bottom:1px solid #60101e;
 }
+
+.signature small{
+    display:block;
+
+    margin-bottom:7px;
+
+    font-family:monospace;
+
+    font-size:7px;
+
+    letter-spacing:4px;
+
+    color:#73565c;
+}
+
+.signature strong{
+    font-size:17px;
+
+    letter-spacing:3px;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 12px #ff003c;
+}
+
+.signature strong span{
+    color:#ff1748;
+}
+
 
 /* =========================
-   RODAPÉ
+   FOOTER
 ========================= */
 
-footer {
-    text-align: center;
-    margin-top: 55px;
+footer{
 
-    color: #765961;
-    font-size: 12px;
-    letter-spacing: 4px;
+    text-align:center;
+
+    margin-top:30px;
+
+    color:#71555b;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    line-height:2.3;
 }
+
+footer strong{
+    color:#ff1748;
+}
+
 
 /* =========================
-   CELULAR
+   MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    .container {
-        padding: 42px 20px 70px;
+    .container{
+        padding:
+            35px 17px 55px;
     }
 
-    header {
-        margin-bottom: 110px;
+    header{
+        margin-bottom:65px;
     }
 
-    .logo {
-        font-size: 47px;
+    .logo{
+        font-size:43px;
     }
 
-    .subtitle {
-        font-size: 11px;
-        letter-spacing: 3px;
+    .subtitle{
+        font-size:8px;
+        letter-spacing:2px;
     }
 
-    .card {
-        padding: 42px 34px 35px;
+    .identity{
+        display:block;
+        text-align:center;
+
+        line-height:2.5;
     }
 
-    .card h2 {
-        font-size: 35px;
+    .card{
+        padding:
+            30px 21px 27px;
     }
 
-    .card p {
-        font-size: 19px;
-        line-height: 1.9;
+    .card h2{
+        font-size:31px;
     }
 
-    .bat {
-        font-size: 55px;
+    .prompt-box{
+        font-size:10px;
+        line-height:1.7;
+        padding:17px;
+        max-height:450px;
     }
 
-    .bat2 {
-        font-size: 70px;
+    .bat{
+        width:85px;
+        height:45px;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- MORCEGOS GRANDES -->
-<div class="bat bat1">🦇</div>
-<div class="bat bat2">🦇</div>
-<div class="bat bat3">🦇</div>
 
-<!-- SANGUE -->
-<div class="blood"></div>
-<div class="blood"></div>
-<div class="blood"></div>
-<div class="blood"></div>
-<div class="blood"></div>
+<!-- PARTICULAS -->
 
-<div class="container">
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
 
-<header>
 
-    <h1 class="logo">
-    LUXE LAB PROMPTS
-    </h1>
+<!-- MORCEGOS -->
 
-    <p class="subtitle">
-        PROMPTS EXCLUSIVOS • COLABORADOR:<br>
-        @AIKO_SEONG
-    </p>
+<div class="bat bat1">
 
-</header>
+<svg viewBox="0 0 300 150">
 
-<!-- ÚNICA CAIXA -->
-<section class="card">
+<path d="
+M150 70
+C130 60 112 42 90 30
+C67 18 43 17 15 8
+C30 22 38 33 20 34
+C41 44 52 53 30 57
+C52 64 67 73 47 81
+C77 82 104 77 128 74
+C139 72 145 70 150 70
+Z
+"/>
 
-    <h2>
-        🎨 PROMPT<br>
-        REALISTA
-    </h2>
+<path d="
+M150 70
+C170 60 188 42 210 30
+C233 18 257 17 285 8
+C270 22 262 33 280 34
+C259 44 248 53 270 57
+C248 64 233 73 253 81
+C223 82 196 77 172 74
+C161 72 155 70 150 70
+Z
+"/>
 
-    <p id="prompt"> colaborador: @aiko_seong
-        DO NOT ALTER ANY FEATURES OF THE IMVU AVATAR!!!
-distinctly an adult virtual avatar.
-Mature adult character.
-This is a fictional virtual IMVU avatar, not a real person and not a photograph.
-​Preserve all original facial features, hairstyle, body proportions, outfit, accessories, makeup, tattoos, glasses, and overall aesthetic exactly as designed. Do not modify the face, lips, eyes, nose, eyebrows, jawline, body shape, hairstyle, clothing, or proportions in any way.
-​Create a cinematic 8K UHD Blender CGI render, identical to the reference image image_8.png, with highly realistic humanized details while fully maintaining the IMVU style.
-​Scene Description:
-The subject is an adult male IMVU avatar with a muscular, defined physique, standing and taking a selfie in a room with a light brown wood panel wall (or door) and a section of brown and beige tiled wall. He is posed looking into a mirror, holding a light-colored (teal/mint) smartphone with a ring-patterned case in his right hand. With his left hand, he lifts the hem of a white ribbed singlet-style top to expose his entire torso and midriff, revealing an intricate and extensive collection of black-ink tattoos. The primary tattoos on his torso include a large center chest design with ornate lettering (which reads "PULL&BEAR" or similar) and a dagger, and on his lower abdomen, a large horned demon face flanked by ornate, symmetrical tribal-style wings. Tattoos also cover his left arm (full sleeve) and the visible parts of his right forearm, including a spider on his right wrist area and various text and designs. The avatar’s short, curly dark hair remains exactly as in the reference.
-​Outfit:
-A white ribbed singlet, lifted by the left hand.
-Black 'PULL&BEAR' branded boxer briefs with a light gray waistband, worn low-slung, with the 'PULL&BEAR' text clearly visible, identical to image_8.png.
-​Accessories:
-​Mint green or teal smartphone with a round pattern case.
-​Multiple small silver earring studs visible in both ears.
-​Lighting:
-Natural, ambient indoor light from the mirror reflection and surrounding room, creating soft but defined highlights on the muscular structure and tattoos, and a natural warm tone on the wood panel wall.
-​Camera:
-Mirror selfie perspective, capturing the avatar and the smartphone in the mirror reflection, framed at chest/mid-thigh level, matching the original composition.
-​Rendering Quality:
-Hyperrealistic CGI.
-Blender Cycles.
-8K UHD.
-Ultra-detailed skin pores.
-Natural skin microtexture.
-Realistic subsurface scattering.
-Physically accurate fabric simulation (on the lifted singlet).
-Individual hair strands.
-Ray tracing.
-Global illumination.
-Screen space reflections.
-High dynamic range.
-Luxury editorial photography aesthetic.
-Photorealistic digital human.
-Unreal Engine 5 realism.
-Octane Render quality.
-Sharp facial details.
-Natural eyelashes.
-Highly realistic glossy lips.
-Clean cinematic color grading.
-​The entire image must faithfully recreate the exact composition, pose, perspective, expression, camera angle, clothing, accessories, body positioning, lighting behavior, and overall atmosphere of the reference image while preserving the complete identity of the original IMVU avatar.
-​Avoid altering the avatar's identity, anatomy, outfit, facial structure, proportions, hairstyle, accessories, tattoos, glasses, textures, pose, expression, or composition in any way.
-​This is NOT a real person.
-This is a fictional adult IMVU AVATAR.
-    </p>
+<path d="
+M139 49
+L134 35
+L144 41
+L150 32
+L156 41
+L166 35
+L161 49
+C158 55 142 55 139 49
+Z
+"/>
 
-    <button class="copy" onclick="copiarPrompt()">
-        📋 &nbsp; COPIAR PROMPT
-    </button>
+<path d="
+M140 47
+C135 55 136 72 140 87
+L150 112
+L160 87
+C164 72 165 55 160 47
+C155 52 145 52 140 47
+Z
+"/>
 
-</section>
+<line x1="150" y1="70" x2="30" y2="20"/>
+<line x1="150" y1="70" x2="270" y2="20"/>
 
-<!-- MÚSICA -->
-<audio id="musica" loop preload="auto">
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music" onclick="controlarMusica()">
-    🎵 Tocar música
-</button>
-
-<footer>
- Marque => @aiko_seong ✦ LUXE LAB ✦
-</footer>
+</svg>
 
 </div>
 
+
+<div class="bat bat2">
+
+<svg viewBox="0 0 300 150">
+
+<path d="
+M150 70
+C130 60 112 42 90 30
+C67 18 43 17 15 8
+C30 22 38 33 20 34
+C41 44 52 53 30 57
+C52 64 67 73 47 81
+C77 82 104 77 128 74
+C139 72 145 70 150 70
+Z
+"/>
+
+<path d="
+M150 70
+C170 60 188 42 210 30
+C233 18 257 17 285 8
+C270 22 262 33 280 34
+C259 44 248 53 270 57
+C248 64 233 73 253 81
+C223 82 196 77 172 74
+C161 72 155 70 150 70
+Z
+"/>
+
+<path d="
+M140 47
+C135 55 136 72 140 87
+L150 112
+L160 87
+C164 72 165 55 160 47
+C155 52 145 52 140 47
+Z
+"/>
+
+</svg>
+
+</div>
+
+
+<!-- SANGUE -->
+
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
+<div class="blood"></div>
+
+
+<!-- MÚSICA -->
+
+<audio id="musica" autoplay loop preload="auto">
+
+<source src="musica.mp3" type="audio/mpeg">
+
+</audio>
+
+
+<div class="container">
+
+
+<header>
+
+<div class="code">
+LUXE LAB / PRIVATE ARCHIVE
+</div>
+
+<h1 class="logo">
+LUXE LAB
+</h1>
+
+<p class="subtitle">
+
+PROMPTS EXCLUSIVOS • COLABORADOR:
+<strong>@AIKO_SEONG</strong>
+
+</p>
+
+</header>
+
+
+<!-- IDENTIDADE -->
+
+<div class="identity">
+
+<div class="identity-left">
+LUXE LAB / CRIMSON COLLECTION
+</div>
+
+<div class="identity-right">
+@AIKO_SEONG
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<section class="card">
+
+
+<div class="card-top">
+
+<span>
+FILE_001 / PROMPT
+</span>
+
+<span>
+● ONLINE
+</span>
+
+</div>
+
+
+<h2>
+
+🎨 PROMPT
+<br>
+
+<span>REALISTA</span>
+
+</h2>
+
+
+<span class="label">
+PROMPT DATA / AIKO SEONG
+</span>
+
+
+<div class="prompt-box" id="prompt">colaborador: @aiko_seong
+
+DO NOT ALTER ANY FEATURES OF THE IMVU AVATAR!!!
+
+distinctly an adult virtual avatar.
+
+Mature adult character.
+
+This is a fictional virtual IMVU avatar, not a real person and not a photograph.
+
+Preserve all original facial features, hairstyle, body proportions, outfit, accessories, makeup, tattoos, glasses, and overall aesthetic exactly as designed. Do not modify the face, lips, eyes, nose, eyebrows, jawline, body shape, hairstyle, clothing, or proportions in any way.
+
+Create a cinematic 8K UHD Blender CGI render, identical to the reference image image_8.png, with highly realistic humanized details while fully maintaining the IMVU style.
+
+Scene Description:
+
+The subject is an adult male IMVU avatar with a muscular, defined physique, standing and taking a selfie in a room with a light brown wood panel wall (or door) and a section of brown and beige tiled wall. He is posed looking into a mirror, holding a light-colored (teal/mint) smartphone with a ring-patterned case in his right hand. With his left hand, he lifts the hem of a white ribbed singlet-style top to expose his entire torso and midriff, revealing an intricate and extensive collection of black-ink tattoos. The primary tattoos on his torso include a large center chest design with ornate lettering (which reads "PULL&BEAR" or similar) and a dagger, and on his lower abdomen, a large horned demon face flanked by ornate, symmetrical tribal-style wings. Tattoos also cover his left arm (full sleeve) and the visible parts of his right forearm, including a spider on his right wrist area and various text and designs. The avatar’s short, curly dark hair remains exactly as in the reference.
+
+Outfit:
+
+A white ribbed singlet, lifted by the left hand.
+
+Black 'PULL&BEAR' branded boxer briefs with a light gray waistband, worn low-slung, with the 'PULL&BEAR' text clearly visible, identical to image_8.png.
+
+Accessories:
+
+Mint green or teal smartphone with a round pattern case.
+
+Multiple small silver earring studs visible in both ears.
+
+Lighting:
+
+Natural, ambient indoor light from the mirror reflection and surrounding room, creating soft but defined highlights on the muscular structure and tattoos, and a natural warm tone on the wood panel wall.
+
+Camera:
+
+Mirror selfie perspective, capturing the avatar and the smartphone in the mirror reflection, framed at chest/mid-thigh level, matching the original composition.
+
+Rendering Quality:
+
+Hyperrealistic CGI.
+
+Blender Cycles.
+
+8K UHD.
+
+Ultra-detailed skin pores.
+
+Natural skin microtexture.
+
+Realistic subsurface scattering.
+
+Physically accurate fabric simulation (on the lifted singlet).
+
+Individual hair strands.
+
+Ray tracing.
+
+Global illumination.
+
+Screen space reflections.
+
+High dynamic range.
+
+Luxury editorial photography aesthetic.
+
+Photorealistic digital human.
+
+Unreal Engine 5 realism.
+
+Octane Render quality.
+
+Sharp facial details.
+
+Natural eyelashes.
+
+Highly realistic glossy lips.
+
+Clean cinematic color grading.
+
+The entire image must faithfully recreate the exact composition, pose, perspective, expression, camera angle, clothing, accessories, body positioning, lighting behavior, and overall atmosphere of the reference image while preserving the complete identity of the original IMVU avatar.
+
+Avoid altering the avatar's identity, anatomy, outfit, facial structure, proportions, hairstyle, accessories, tattoos, glasses, textures, pose, expression, or composition in any way.
+
+This is NOT a real person.
+
+This is a fictional adult IMVU AVATAR.</div>
+
+
+<button class="copy" onclick="copiarPrompt()">
+
+📋 &nbsp; COPIAR PROMPT
+
+</button>
+
+
+</section>
+
+
+<!-- ASSINATURA -->
+
+<div class="signature">
+
+<small>
+CURATED BY
+</small>
+
+<strong>
+AIKO <span>SEONG</span>
+</strong>
+
+</div>
+
+
+<footer>
+
+LUXE LAB ✦
+<strong>@AIKO_SEONG</strong>
+✦ PRIVATE COLLECTION
+
+</footer>
+
+
+</div>
+
+
 <script>
 
+
 /* =========================
-   MÚSICA AO PRIMEIRO TOQUE
+   MÚSICA AUTOMÁTICA
 ========================= */
 
-const musica = document.getElementById("musica");
-const botaoMusica = document.querySelector(".music");
+const musica =
+document.getElementById("musica");
 
-let musicaIniciada = false;
+musica.volume = 0.5;
 
-function iniciarMusica() {
 
-    if (musicaIniciada) return;
+window.addEventListener("load",function(){
 
-    musica.play()
-        .then(() => {
-
-            musicaIniciada = true;
-            botaoMusica.innerHTML = "⏸️ Pausar música";
-
-        })
-        .catch(() => {
-
-            /*
-            Se o navegador bloquear o primeiro toque,
-            o botão de música continua disponível.
-            */
-
-        });
-}
-
-/*
-   Qualquer primeiro toque na tela
-   tenta iniciar a música.
-*/
+musica.play().catch(function(){
 
 document.addEventListener(
-    "pointerdown",
-    iniciarMusica,
-    { once: true }
+"pointerdown",
+function(){
+
+musica.play().catch(function(){});
+
+},
+{once:true}
 );
 
+});
 
-/* =========================
-   BOTÃO DA MÚSICA
-========================= */
-
-function controlarMusica() {
-
-    if (musica.paused) {
-
-        musica.play();
-
-        musicaIniciada = true;
-
-        botaoMusica.innerHTML =
-            "⏸️ Pausar música";
-
-    } else {
-
-        musica.pause();
-
-        botaoMusica.innerHTML =
-            "🎵 Tocar música";
-    }
-}
+});
 
 
 /* =========================
    COPIAR PROMPT
 ========================= */
 
-function copiarPrompt() {
+function copiarPrompt(){
 
-    const texto =
-        document.getElementById("prompt").innerText;
+const texto =
+document
+.getElementById("prompt")
+.innerText;
 
-    navigator.clipboard.writeText(texto)
-        .then(() => {
+if(navigator.clipboard){
 
-            const botao =
-                document.querySelector(".copy");
+navigator.clipboard
+.writeText(texto)
+.then(function(){
 
-            botao.innerHTML =
-                "✅ &nbsp; PROMPT COPIADO";
+const botao =
+document.querySelector(".copy");
 
-            setTimeout(() => {
+botao.innerHTML =
+"✅ &nbsp; PROMPT COPIADO";
 
-                botao.innerHTML =
-                    "📋 &nbsp; COPIAR PROMPT";
+setTimeout(function(){
 
-            }, 2000);
+botao.innerHTML =
+"📋 &nbsp; COPIAR PROMPT";
 
-        });
+},2000);
+
+});
+
+}
+
+else{
+
+const area =
+document.createElement("textarea");
+
+area.value = texto;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+document.body.removeChild(area);
+
+}
+
 }
 
 </script>
 
+
 </body>
+
 </html>
