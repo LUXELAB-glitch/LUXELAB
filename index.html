@@ -7,527 +7,253 @@
 <title>LUXE LAB — Colaborador: @aiko_seong</title>
 
 <style>
-
-/* =========================
-   LUXE LAB — DARK GLITCH
-   ========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    background: #050505;
-}
-
-body {
-    min-height: 100vh;
-    padding: 25px 14px 60px;
-    color: #fff;
+body{
+    min-height:100vh;
+    padding:30px 20px 60px;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#f5f5f5;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            #3d000b 0%,
-            #170006 28%,
-            #080306 55%,
-            #030303 100%
-        );
-    overflow-x: hidden;
+        radial-gradient(circle at 50% 0%,rgba(190,0,35,.20),transparent 35%),
+        linear-gradient(180deg,#120306 0%,#070708 55%,#030304 100%);
 }
 
-/* brilho ambiente */
+/* ===== CABEÇALHO ===== */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(255, 0, 45, 0.13),
-            transparent 35%
-        );
-    z-index: -1;
+header{
+    text-align:center;
+    margin:10px auto 38px;
+    max-width:900px;
 }
 
-/* linhas de scan */
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.035;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 3px,
-        #ff003c 4px
-    );
-    z-index: 50;
-}
-
-/* =========================
-   CONTAINER
-   ========================= */
-
-.container {
-    width: 100%;
-    max-width: 680px;
-    margin: auto;
-}
-
-/* =========================
-   CABEÇALHO
-   ========================= */
-
-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.logo {
-    position: relative;
-    display: inline-block;
-    font-size: 42px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #fff;
-    text-transform: uppercase;
-
+.logo{
+    position:relative;
+    display:inline-block;
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#fff;
     text-shadow:
         0 0 5px #fff,
-        0 0 12px #ff1744,
-        0 0 25px #ff003c,
-        0 0 45px #ff003c;
+        0 0 15px #ff1638,
+        0 0 30px rgba(255,0,40,.8);
 }
 
-/* sombra glitch */
-
-.logo::before {
-    content: "LUXE LAB";
-    position: absolute;
-    left: 4px;
-    top: 4px;
-    color: #ff003c;
-    opacity: 0.65;
-    z-index: -1;
-    filter: blur(1px);
+.logo::after{
+    content:"LUXE LAB";
+    position:absolute;
+    left:0;
+    top:7px;
+    width:100%;
+    color:#ff1740;
+    opacity:.45;
+    transform:translate(5px,8px);
+    filter:blur(2px);
+    z-index:-1;
 }
 
-.logo::after {
-    content: "LUXE LAB";
-    position: absolute;
-    left: -3px;
-    top: 1px;
-    color: #8b001e;
-    opacity: 0.45;
-    z-index: -2;
+.subtitle{
+    margin-top:18px;
+    color:#aaa;
+    font-size:15px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 }
 
-/* =========================
-   SUBTÍTULO
-   ========================= */
+/* ===== ÚNICO TEMA ===== */
 
-.subtitle {
-    margin-top: 15px;
-    color: #aaa;
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+.controls{
+    display:flex;
+    justify-content:center;
+    margin-bottom:48px;
 }
 
-/* =========================
-   IDENTIDADE
-   ========================= */
-
-.identity {
-    text-align: center;
-    margin-bottom: 28px;
+.theme{
+    display:none;
 }
 
-.identity span {
-    color: #ff1744;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px #ff003c;
+/* ===== ÚNICO PROMPT ===== */
+
+.prompts{
+    width:100%;
+    max-width:900px;
+    margin:auto;
 }
 
-/* =========================
-   PROMPTS
-   ========================= */
-
-.prompts {
-    width: 100%;
-    display: grid;
-    gap: 28px;
-}
-
-.card {
-    position: relative;
-
-    padding: 28px 25px 30px;
-
+.card{
+    position:relative;
+    overflow:hidden;
+    padding:32px;
+    border:1px solid #8e1028;
+    border-radius:8px;
     background:
         linear-gradient(
             145deg,
-            rgba(35, 2, 8, 0.98),
-            rgba(5, 3, 5, 0.98)
+            rgba(38,5,12,.96),
+            rgba(8,7,9,.98)
         );
-
-    border: 1px solid #8d1028;
-    border-radius: 5px;
-
     box-shadow:
-        0 0 8px rgba(255, 0, 50, 0.18),
-        inset 0 0 30px rgba(255, 0, 50, 0.035);
-
-    overflow: hidden;
+        0 0 20px rgba(255,0,45,.08),
+        inset 0 0 35px rgba(120,0,20,.08);
 }
 
-/* barra vermelha superior */
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:74px;
+    height:5px;
+    background:#ff1238;
+    box-shadow:0 0 12px #ff1238;
+}
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+.card::after{
+    content:"✦";
+    position:absolute;
+    top:28px;
+    right:30px;
+    color:#ff1744;
+    font-size:25px;
+    text-shadow:0 0 12px #ff1744;
+}
 
-    width: 73px;
-    height: 5px;
+.card h2{
+    font-size:31px;
+    margin-bottom:28px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#f7f7f7;
+}
 
-    background: #ff003c;
+.card p{
+    color:#c9c9c9;
+    font-size:19px;
+    line-height:2;
+    margin-bottom:30px;
+}
 
+.copy{
+    border:1px solid #ff1744;
+    border-radius:5px;
+    padding:17px 28px;
+    background:linear-gradient(135deg,#ff0035,#c90029);
+    color:#fff;
+    font-size:16px;
+    font-weight:900;
+    letter-spacing:.5px;
+    cursor:pointer;
     box-shadow:
-        0 0 8px #ff003c,
-        0 0 18px #ff003c;
+        0 0 12px rgba(255,0,45,.35),
+        inset 0 0 10px rgba(255,255,255,.08);
+    transition:.2s;
 }
 
-/* símbolo no canto */
-
-.card::after {
-    content: "✦";
-
-    position: absolute;
-    top: 24px;
-    right: 25px;
-
-    color: #ff003c;
-    font-size: 19px;
-
-    text-shadow:
-        0 0 7px #ff003c,
-        0 0 15px #ff003c;
-}
-
-/* =========================
-   TÍTULO DOS CARDS
-   ========================= */
-
-.card h2 {
-    margin-bottom: 20px;
-
-    color: #fff;
-    font-size: 25px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 4px rgba(255,255,255,.5),
-        0 0 12px rgba(255,0,50,.2);
-}
-
-/* =========================
-   TEXTO
-   ========================= */
-
-.card p {
-    color: #c8c8c8;
-
-    font-size: 16px;
-    line-height: 1.8;
-
-    letter-spacing: .15px;
-}
-
-/* =========================
-   BOTÃO COPIAR
-   ========================= */
-
-.copy {
-    width: 205px;
-
-    margin-top: 25px;
-    padding: 15px 18px;
-
-    border: 1px solid #ff1744;
-    border-radius: 4px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff0038,
-            #c40025
-        );
-
-    color: #fff;
-
-    font-size: 13px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-    text-transform: uppercase;
-
-    cursor: pointer;
-
+.copy:hover{
+    transform:translateY(-2px);
     box-shadow:
-        0 0 10px rgba(255,0,50,.4),
-        inset 0 0 8px rgba(255,255,255,.08);
-
-    transition: .2s;
+        0 0 22px rgba(255,0,45,.55);
 }
 
-.copy:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 0 12px #ff003c,
-        0 0 25px rgba(255,0,50,.45);
+.copy:active{
+    transform:scale(.98);
 }
 
-.copy:active {
-    transform: scale(.97);
-}
+/* ===== RESPONSIVO ===== */
 
-/* =========================
-   ASSINATURA
-   ========================= */
+@media(max-width:600px){
 
-.signature {
-    margin-top: 18px;
-
-    color: #555;
-
-    font-size: 9px;
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-}
-
-.signature span {
-    color: #a00022;
-
-    text-shadow:
-        0 0 8px rgba(255,0,50,.5);
-}
-
-/* =========================
-   GLITCH DO LOGO
-   ========================= */
-
-@keyframes glitch {
-
-    0%,
-    90%,
-    100% {
-        transform: translateX(0);
+    body{
+        padding:25px 20px 50px;
     }
 
-    92% {
-        transform: translateX(-2px);
+    .logo{
+        font-size:35px;
     }
 
-    94% {
-        transform: translateX(2px);
+    .subtitle{
+        font-size:12px;
+        letter-spacing:3px;
+        line-height:1.8;
     }
 
-    96% {
-        transform: translateX(-1px);
+    .card{
+        padding:30px 28px;
+    }
+
+    .card h2{
+        font-size:28px;
+        padding-right:25px;
+    }
+
+    .card p{
+        font-size:18px;
+        line-height:2;
+    }
+
+    .copy{
+        width:auto;
+        font-size:15px;
     }
 }
-
-.logo {
-    animation: glitch 5s infinite;
-}
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    body {
-        padding: 22px 12px 50px;
-    }
-
-    .logo {
-        font-size: 35px;
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 9px;
-        letter-spacing: 3px;
-    }
-
-    .card {
-        padding: 27px 20px 30px;
-    }
-
-    .card h2 {
-        font-size: 23px;
-    }
-
-    .card p {
-        font-size: 15px;
-        line-height: 1.75;
-    }
-
-    .copy {
-        width: 100%;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
 
-    <header>
+    <h1 class="logo">LUXE LAB</h1>
 
-        <h1 class="logo">
-            LUXE LAB
-        </h1>
+    <p class="subtitle">
+        PROMPTS EXCLUSIVOS • COLABORADOR: @AIKO_SEONG
+    </p>
 
-        <p class="subtitle">
-            Prompts Exclusivos • Colaborador: @aiko_seong
-        </p>
+</header>
 
-    </header>
-
-
-    <div class="identity">
-        <span>◆ LUXE LAB • DARK GLITCH ◆</span>
-    </div>
-
-
-    <section class="prompts">
-
-
-        <!-- PROMPT REALISTA -->
-
-        <div class="card">
-
-            <h2>🎨 Prompt Realista</h2>
-
-            <p id="prompt1">
-                Crie uma imagem ultra-realista, com iluminação
-                cinematográfica, detalhes naturais da pele,
-                sombras suaves, alta definição, profundidade
-                de campo e aparência profissional.
-            </p>
-
-            <button
-                class="copy"
-                onclick="copiar('prompt1', this)">
-                📋 Copiar Prompt
-            </button>
-
-            <div class="signature">
-                LUXE LAB • <span>@aiko_seong</span>
-            </div>
-
-        </div>
-
-
-        <!-- PROMPT 3D -->
-
-        <div class="card">
-
-            <h2>🔥 Prompt 3D</h2>
-
-            <p id="prompt2">
-                Crie um personagem em 3D realista, com materiais
-                PBR, iluminação ambiente, sombras realistas,
-                alto nível de detalhes, renderização
-                cinematográfica e aparência de render do Blender.
-            </p>
-
-            <button
-                class="copy"
-                onclick="copiar('prompt2', this)">
-                📋 Copiar Prompt
-            </button>
-
-            <div class="signature">
-                LUXE LAB • <span>@aiko_seong</span>
-            </div>
-
-        </div>
-
-
-        <!-- PROMPT FOTOGRÁFICO -->
-
-        <div class="card">
-
-            <h2>📸 Prompt Fotográfico</h2>
-
-            <p id="prompt3">
-                Fotografia extremamente detalhada, composição
-                profissional, iluminação cinematográfica,
-                foco preciso no personagem, textura natural
-                da pele, profundidade de campo e qualidade 8K.
-            </p>
-
-            <button
-                class="copy"
-                onclick="copiar('prompt3', this)">
-                📋 Copiar Prompt
-            </button>
-
-            <div class="signature">
-                LUXE LAB • <span>@aiko_seong</span>
-            </div>
-
-        </div>
-
-
-    </section>
-
+<div class="controls">
+    <div class="theme"></div>
 </div>
 
+<section class="prompts">
+
+    <div class="card">
+
+        <h2>🎨 Prompt Realista</h2>
+
+        <p id="prompt">
+            Crie uma imagem ultra-realista, com iluminação
+            cinematográfica, detalhes naturais da pele, sombras
+            suaves, alta definição, profundidade de campo e
+            aparência profissional.
+        </p>
+
+        <button class="copy" onclick="copiarPrompt()">
+            📋 &nbsp; COPIAR PROMPT
+        </button>
+
+    </div>
+
+</section>
 
 <script>
 
-function copiar(id, botao) {
+function copiarPrompt(){
 
-    const texto =
-        document.getElementById(id).innerText;
+    const texto = document.getElementById("prompt").innerText;
 
-    navigator.clipboard.writeText(texto).then(() => {
-
-        const original = botao.innerHTML;
-
-        botao.innerHTML = "✓ Prompt Copiado";
-
-        setTimeout(() => {
-            botao.innerHTML = original;
-        }, 1600);
-
-    }).catch(() => {
-
-        alert("Não foi possível copiar o prompt.");
-
-    });
+    navigator.clipboard.writeText(texto)
+        .then(() => {
+            alert("Prompt copiado! ✅");
+        })
+        .catch(() => {
+            alert("Não foi possível copiar o prompt.");
+        });
 
 }
 
