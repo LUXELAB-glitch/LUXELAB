@@ -7,208 +7,574 @@
 <title>LUXE LAB — Colaborador: @aiko_seong</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    min-height:100vh;
-    padding:30px 20px 60px;
-    font-family:Arial,Helvetica,sans-serif;
-    color:#f5f5f5;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
     background:
-        radial-gradient(circle at 50% 0%,rgba(190,0,35,.20),transparent 35%),
-        linear-gradient(180deg,#120306 0%,#070708 55%,#030304 100%);
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(120, 0, 20, 0.45),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 40%,
+            rgba(80, 0, 15, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #180005 0%,
+            #0b0205 45%,
+            #030203 100%
+        );
+
+    color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 28px 20px 60px;
 }
 
-/* ===== CABEÇALHO ===== */
 
-header{
-    text-align:center;
-    margin:10px auto 38px;
-    max-width:900px;
+/* =========================
+   MORCEGOS
+========================= */
+
+.bats {
+    position: fixed;
+    top: 110px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 0 20px;
+
+    font-size: 24px;
+
+    opacity: 0.28;
+
+    filter:
+        drop-shadow(0 0 5px #8d001b)
+        drop-shadow(0 0 10px #40000b);
+
+    pointer-events: none;
+    z-index: 0;
+
+    animation: batsFloat 5s ease-in-out infinite;
 }
 
-.logo{
-    position:relative;
-    display:inline-block;
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:3px;
-    color:#fff;
+@keyframes batsFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    margin: 20px auto 115px;
+
+    max-width: 800px;
+}
+
+
+/* TÍTULO */
+
+h1 {
+    position: relative;
+
+    display: inline-block;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(42px, 11vw, 72px);
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+
     text-shadow:
-        0 0 5px #fff,
-        0 0 15px #ff1638,
-        0 0 30px rgba(255,0,40,.8);
+        0 0 4px #ffffff,
+        0 0 10px #ff2448,
+        0 0 22px #ff002f,
+        0 0 40px #900018;
+
+    animation: horrorGlow 3s ease-in-out infinite;
 }
 
-.logo::after{
-    content:"LUXE LAB";
-    position:absolute;
-    left:0;
-    top:7px;
-    width:100%;
-    color:#ff1740;
-    opacity:.45;
-    transform:translate(5px,8px);
-    filter:blur(2px);
-    z-index:-1;
+@keyframes horrorGlow {
+
+    0%, 100% {
+        text-shadow:
+            0 0 4px #ffffff,
+            0 0 10px #ff2448,
+            0 0 22px #ff002f,
+            0 0 40px #900018;
+    }
+
+    50% {
+        text-shadow:
+            0 0 5px #ffffff,
+            0 0 15px #ff0033,
+            0 0 32px #ff002f,
+            0 0 55px #76000f;
+    }
 }
 
-.subtitle{
-    margin-top:18px;
-    color:#aaa;
-    font-size:15px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-}
 
-/* ===== ÚNICO TEMA ===== */
+/* =========================
+   SANGUE ESCORRENDO
+========================= */
 
-.controls{
-    display:flex;
-    justify-content:center;
-    margin-bottom:48px;
-}
+h1::before {
+    content: "";
 
-.theme{
-    display:none;
-}
+    position: absolute;
 
-/* ===== ÚNICO PROMPT ===== */
+    left: 13%;
+    top: 86%;
 
-.prompts{
-    width:100%;
-    max-width:900px;
-    margin:auto;
-}
+    width: 8px;
+    height: 38px;
 
-.card{
-    position:relative;
-    overflow:hidden;
-    padding:32px;
-    border:1px solid #8e1028;
-    border-radius:8px;
     background:
         linear-gradient(
-            145deg,
-            rgba(38,5,12,.96),
-            rgba(8,7,9,.98)
+            to bottom,
+            #ff123d 0%,
+            #c00027 45%,
+            #60000f 100%
         );
+
+    border-radius:
+        0 0 8px 8px;
+
     box-shadow:
-        0 0 20px rgba(255,0,45,.08),
-        inset 0 0 35px rgba(120,0,20,.08);
+        42px 4px 0 -1px #a50020,
+        88px 1px 0 -2px #730015,
+        145px 7px 0 -1px #b00022;
+
+    filter:
+        drop-shadow(0 0 5px #ff0033);
+
+    animation: bloodDrop 3.5s ease-in-out infinite;
 }
 
-.card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:74px;
-    height:5px;
-    background:#ff1238;
-    box-shadow:0 0 12px #ff1238;
+@keyframes bloodDrop {
+
+    0%, 100% {
+        transform: scaleY(.75);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1.15);
+        transform-origin: top;
+    }
 }
 
-.card::after{
-    content:"✦";
-    position:absolute;
-    top:28px;
-    right:30px;
-    color:#ff1744;
-    font-size:25px;
-    text-shadow:0 0 12px #ff1744;
+
+/* gotas extras */
+
+h1::after {
+    content: "•  •   •";
+
+    position: absolute;
+
+    left: 25%;
+    top: 104%;
+
+    color: #b50023;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 22px;
+
+    text-shadow:
+        0 0 5px #ff002f,
+        0 0 12px #75000f;
+
+    opacity: .9;
 }
 
-.card h2{
-    font-size:31px;
-    margin-bottom:28px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    color:#f7f7f7;
+
+/* =========================
+   SUBTÍTULO
+========================= */
+
+.subtitle {
+    margin-top: 22px;
+
+    color: #c8aeb2;
+
+    font-size: clamp(13px, 3.5vw, 18px);
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    line-height: 1.8;
+
+    text-shadow:
+        0 0 8px rgba(255, 0, 45, .25);
 }
 
-.card p{
-    color:#c9c9c9;
-    font-size:19px;
-    line-height:2;
-    margin-bottom:30px;
+
+/* =========================
+   ÁREA DO PROMPT
+========================= */
+
+.prompts {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin: auto;
 }
 
-.copy{
-    border:1px solid #ff1744;
-    border-radius:5px;
-    padding:17px 28px;
-    background:linear-gradient(135deg,#ff0035,#c90029);
-    color:#fff;
-    font-size:16px;
-    font-weight:900;
-    letter-spacing:.5px;
-    cursor:pointer;
+
+/* =========================
+   ÚNICO CARD
+========================= */
+
+.card {
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(150, 0, 30, .12),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #19070b,
+            #090306
+        );
+
+    border: 1px solid #8f142c;
+
+    border-radius: 4px;
+
+    padding: 46px 34px 38px;
+
     box-shadow:
-        0 0 12px rgba(255,0,45,.35),
-        inset 0 0 10px rgba(255,255,255,.08);
-    transition:.2s;
+        0 0 20px rgba(170, 0, 35, .12),
+        inset 0 0 30px rgba(100, 0, 20, .08);
+
+    overflow: hidden;
 }
 
-.copy:hover{
-    transform:translateY(-2px);
+
+/* linha vermelha superior */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 135px;
+    height: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff0038,
+            #d00029,
+            transparent
+        );
+
     box-shadow:
-        0 0 22px rgba(255,0,45,.55);
+        0 0 12px #ff0038,
+        0 0 25px rgba(255, 0, 50, .6);
 }
 
-.copy:active{
-    transform:scale(.98);
+
+/* brilho lateral */
+
+.card::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 28px;
+    right: 28px;
+
+    color: #ff1744;
+
+    font-size: 28px;
+
+    text-shadow:
+        0 0 8px #ff0038,
+        0 0 20px #a0001e;
+
+    animation: starPulse 2.5s infinite;
 }
 
-/* ===== RESPONSIVO ===== */
+@keyframes starPulse {
 
-@media(max-width:600px){
-
-    body{
-        padding:25px 20px 50px;
+    0%, 100% {
+        opacity: .55;
+        transform: scale(.9);
     }
 
-    .logo{
-        font-size:35px;
-    }
-
-    .subtitle{
-        font-size:12px;
-        letter-spacing:3px;
-        line-height:1.8;
-    }
-
-    .card{
-        padding:30px 28px;
-    }
-
-    .card h2{
-        font-size:28px;
-        padding-right:25px;
-    }
-
-    .card p{
-        font-size:18px;
-        line-height:2;
-    }
-
-    .copy{
-        width:auto;
-        font-size:15px;
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
     }
 }
+
+
+/* =========================
+   TÍTULO DO PROMPT
+========================= */
+
+.card h2 {
+    position: relative;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(30px, 7vw, 48px);
+
+    line-height: 1.15;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 32px;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 12px rgba(255, 0, 45, .45);
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.card p {
+    color: #d8cdd0;
+
+    font-size: clamp(17px, 4.5vw, 22px);
+
+    line-height: 1.9;
+
+    letter-spacing: .3px;
+
+    margin-bottom: 34px;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.copy {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 280px;
+
+    padding: 17px 30px;
+
+    border: 1px solid #ff1744;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff0038,
+            #c5002b
+        );
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 50, .45),
+        0 0 25px rgba(255, 0, 50, .2);
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        background .2s;
+}
+
+.copy:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1744,
+            #e00032
+        );
+
+    box-shadow:
+        0 0 15px #ff1744,
+        0 0 35px rgba(255, 0, 50, .45);
+}
+
+.copy:active {
+    transform: scale(.97);
+}
+
+
+/* =========================
+   MÚSICA
+========================= */
+
+.music-area {
+    margin-top: 35px;
+
+    text-align: center;
+
+    color: #6f555b;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 14px 50px;
+    }
+
+    header {
+        margin-bottom: 100px;
+    }
+
+    h1 {
+        font-size: 43px;
+        letter-spacing: 3px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .bats {
+        top: 105px;
+        font-size: 19px;
+    }
+
+    .card {
+        padding: 40px 24px 30px;
+    }
+
+    .card h2 {
+        font-size: 34px;
+        padding-right: 20px;
+    }
+
+    .card p {
+        font-size: 18px;
+        line-height: 1.9;
+    }
+
+    .copy {
+        width: 100%;
+        min-width: 0;
+        font-size: 15px;
+        padding: 17px 15px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
+
+<!-- MORCEGOS -->
+
+<div class="bats">
+    <span>🦇</span>
+    <span>🦇</span>
+    <span>🦇</span>
+    <span>🦇</span>
+</div>
+
+
+<!-- CABEÇALHO -->
 
 <header>
 
-    <h1 class="logo">LUXE LAB</h1>
+    <h1>LUXE LAB</h1>
 
     <p class="subtitle">
         PROMPTS EXCLUSIVOS • COLABORADOR: @AIKO_SEONG
@@ -216,43 +582,65 @@ header{
 
 </header>
 
-<div class="controls">
-    <div class="theme"></div>
-</div>
+
+<!-- ÚNICO PROMPT -->
 
 <section class="prompts">
 
     <div class="card">
 
-        <h2>🎨 Prompt Realista</h2>
+        <h2>
+            🎨 Prompt<br>
+            Realista
+        </h2>
 
         <p id="prompt">
+
             Crie uma imagem ultra-realista, com iluminação
-            cinematográfica, detalhes naturais da pele, sombras
-            suaves, alta definição, profundidade de campo e
-            aparência profissional.
+            cinematográfica, detalhes naturais da pele,
+            sombras suaves, alta definição, profundidade
+            de campo e aparência profissional.
+
         </p>
 
-        <button class="copy" onclick="copiarPrompt()">
-            📋 &nbsp; COPIAR PROMPT
+        <button
+            class="copy"
+            onclick="copiarPrompt()"
+        >
+            📋 &nbsp; Copiar Prompt
         </button>
 
     </div>
 
 </section>
 
+
+<div class="music-area">
+    LUXE LAB • DARK HORROR
+</div>
+
+
 <script>
 
-function copiarPrompt(){
+/* =========================
+   COPIAR PROMPT
+========================= */
 
-    const texto = document.getElementById("prompt").innerText;
+function copiarPrompt() {
+
+    const texto =
+        document.getElementById("prompt").innerText.trim();
 
     navigator.clipboard.writeText(texto)
-        .then(() => {
-            alert("Prompt copiado! ✅");
+        .then(function() {
+
+            alert("Prompt copiado! 🩸");
+
         })
-        .catch(() => {
+        .catch(function() {
+
             alert("Não foi possível copiar o prompt.");
+
         });
 
 }
@@ -260,4 +648,4 @@ function copiarPrompt(){
 </script>
 
 </body>
-</html>
+    </html>
